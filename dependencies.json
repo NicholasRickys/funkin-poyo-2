@@ -3,7 +3,7 @@
 		{
 			"name":"lime",
 			"type":"install",
-			"version":null
+			"version":"7.9.0"
 		},
 		{
 			"name":"openfl",
@@ -13,7 +13,7 @@
 		{
 			"name":"flixel",
 			"type":"install",
-			"version":null
+			"version":"4.11.0"
 		},
 		{
 			"name":"hscript",
