@@ -8,7 +8,7 @@
 		{
 			"name":"openfl",
 			"type":"install",
-			"version":null
+			"version":"9.2.0"
 		},
 		{
 			"name":"flixel",
@@ -29,13 +29,6 @@
 			"name":"flixel-ui",
 			"type":"install",
 			"version":null
-		},
-		{
-			"name":"linc_luajit",
-			"type":"git",
-			"dir":"linc_luajit",
-			"ref":"master",
-			"url":"https://github.com/Sirox228/linc_luajit.git"
 		},
 		{
 			"name":"hxCodec",
