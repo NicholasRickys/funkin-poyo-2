@@ -9,11 +9,6 @@ class Stage extends FlxSpriteGroup {
 	public function new(stageName:String) {
 		super();
 		switch (stageName) {
-			case 'cityvspoyo':
-				curStage = 'cityvspoyo';
-				var bg:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('bg', 'poyo'));
-				bg.antialiasing = true;
-				add(bg);
 			default:
 				curStage = 'cityvspoyo';
 				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('bg', 'poyo'));
@@ -25,21 +20,11 @@ class Stage extends FlxSpriteGroup {
 	public function returnStageXYWH() {
 		var width:Float = 0;
 		var height:Float = 0;
-		var x:Float = null;
-		var y:Float = null;
+		var x:Float = 0;
+		var y:Float = 0;
 		forEachAlive(function(spr:FlxSprite) {
-			if (x == null)
-				x = spr.x;
-			else {
-				if (spr.x < x) 
-					x = spr.x;
-			}
-			if (y == null)
-				y = spr.y;
-			else {
-				if (spr.y < y) 
-					y = spr.y;
-			}
+			if (spr.x > x) x = spr.x;
+			if (spr.y > y) y = spr.y;
 			if (spr.width > width) width = spr.width;
 			if (spr.height > height) height = spr.height;
 		});
