@@ -1,8 +1,5 @@
 package;
 
-#if android
-import android.os.Build.VERSION;
-#end
 import flixel.FlxG;
 import openfl.Lib;
 import openfl.events.Event;
@@ -82,9 +79,7 @@ class Overlay extends TextField {
 			if (FlxG.save.data.GPUInfo) {
 				stats.push('GL Renderer: ${getGLInfo(RENDERER)}');
 				stats.push('GL Shading Version: ${getGLInfo(SHADING_LANGUAGE_VERSION)}');
-				#if android
-				stats.push('System: Android ${VERSION.RELEASE} (API ${VERSION.SDK_INT})');
-				#elseif mac
+				#if mac
 				stats.push('System: ${lime.system.System.platformLabel}');
 				#else
 				stats.push('System: ${lime.system.System.platformLabel} ${lime.system.System.platformVersion}');
@@ -92,9 +87,7 @@ class Overlay extends TextField {
 			} else {
 				stats.remove('GL Renderer: ${getGLInfo(RENDERER)}');
 				stats.remove('GL Shading Version: ${getGLInfo(SHADING_LANGUAGE_VERSION)}');
-				#if android
-				stats.remove('System: Android ${VERSION.RELEASE} (API ${VERSION.SDK_INT})');
-				#elseif mac
+				#if mac
 				stats.remove('System: ${lime.system.System.platformLabel}');
 				#else
 				stats.remove('System: ${lime.system.System.platformLabel} ${lime.system.System.platformVersion}');
