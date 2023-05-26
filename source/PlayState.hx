@@ -234,7 +234,7 @@ class PlayState extends MusicBeatState {
 		stage = new Stage(SONG.stage);
 		add(stage);
 		curStage = stage.curStage;
-		var xywh = stage.returnStageXYWH()
+		var xywh = stage.returnStageXYWH();
 		camGame.setScrollBoundsRect(xywh[0],xywh[1],xywh[2],xywh[3]);
 
 		var gfVersion:String = 'gf';
