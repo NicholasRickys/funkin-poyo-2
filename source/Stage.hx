@@ -22,13 +22,27 @@ class Stage extends FlxSpriteGroup {
 		}
 	}
 
-	public function returnStageWH() {
+	public function returnStageXYWH() {
 		var width:Float = 0;
 		var height:Float = 0;
+		var x:Float = null;
+		var y:Float = null;
 		forEachAlive(function(spr:FlxSprite) {
+			if (x == null)
+				x = spr.x;
+			else {
+				if (spr.x < x) 
+					x = spr.x;
+			}
+			if (y == null)
+				y = spr.y;
+			else {
+				if (spr.y < y) 
+					y = spr.y;
+			}
 			if (spr.width > width) width = spr.width;
 			if (spr.height > height) height = spr.height;
 		});
-		return [width, height];
+		return [x, y, width, height];
 	}
 }
