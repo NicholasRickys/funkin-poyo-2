@@ -51,7 +51,6 @@
 	<haxelib name="hscript" />
 	<haxelib name="flixel-ui" />
 	<haxelib name="discord_rpc" if="windows"/>
-	<haxelib name="extension-androidtools" if="android" />
 	<haxelib name="hxCodec" if="desktop || android" unless="web" />
 
 	<haxedef name="HXC_DEBUG_TRACE" if="debug" />
