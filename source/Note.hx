@@ -36,7 +36,7 @@ class Note extends FlxSprite {
 
 		// now poyo doesnt go ultra instinct
 		var offsetMultiplier:Float = (cast(Lib.current.getChildAt(0), Main)).getFPS() / 60;
-		randomHit = FlxG.random.float(-45*offsetMultiplier, 45*offsetMultiplier);
+		randomHit = FlxG.random.float(-75*offsetMultiplier, 75*offsetMultiplier);
 
 		this.prevNote = prevNote;
 		isSustainNote = sustainNote;

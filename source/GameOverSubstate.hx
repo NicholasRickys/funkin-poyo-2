@@ -12,11 +12,11 @@ class GameOverSubstate extends MusicBeatSubstate {
 	var stageSuffix:String = "";
 
 	public function new(x:Float, y:Float) {
-		var daBf:String = '';
-		switch (PlayState.SONG.player1) {
+		var daBf:String = 'bf';
+		/*switch (PlayState.SONG.player1) {
 			default:
 				daBf = 'bf';
-		}
+		}*/
 
 		super();
 
@@ -24,6 +24,8 @@ class GameOverSubstate extends MusicBeatSubstate {
 
 		bf = new Boyfriend(x, y, daBf);
 		add(bf);
+
+		bf.playAnim("firstDeath");
 
 		camFollow = new FlxObject(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y, 1, 1);
 		add(camFollow);
@@ -82,6 +84,7 @@ class GameOverSubstate extends MusicBeatSubstate {
 	function endBullshit():Void {
 		if (!isEnding) {
 			isEnding = true;
+			bf.playAnim('deathConfirm');
 			//bf.playAnim('deathConfirm', true);
 			FlxG.sound.music.stop();
 			FlxG.sound.play(Paths.music('gameOverEnd' + stageSuffix, 'shared'));

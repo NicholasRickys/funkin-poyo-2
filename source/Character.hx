@@ -20,9 +20,12 @@ class Character extends FlxSprite {
 
 	public var maxHTimer:Float = 4;
 
-	//FOR POYO LOL
+	// FOR POYO LOL
 	public var specialTransition:Bool = false;
 	public var stunned:Bool = false;
+
+	// for players bein on right side when they really a leftie
+	public var nativelyPlayable:Bool = false;
 
 	public function new(x:Float, y:Float, ?character:String = "bf", ?isPlayer:Bool = false) {
 		super(x, y);
@@ -67,16 +70,26 @@ class Character extends FlxSprite {
 				frames = Paths.getSparrowAtlas('characters/PoyoSprites', 'poyo');
 
 				animation.addByPrefix('idle', 'poyo_boppin', 24, false);
-				animation.addByPrefix('singLEFT', 'poyo_left', 24, false);
+				if (!isPlayer) {
+					animation.addByPrefix('singLEFT', 'poyo_left', 24, false);
+					animation.addByPrefix('singRIGHT', 'poyo_right', 24, false);
+				} else {
+					animation.addByPrefix('singRIGHT', 'poyo_left', 24, false);
+					animation.addByPrefix('singLEFT', 'poyo_right', 24, false);
+				}
 				animation.addByPrefix('singDOWN', 'poyo_down', 24, false);
 				animation.addByPrefix('singUP', 'poyo_up', 24, false);
-				animation.addByPrefix('singRIGHT', 'poyo_right', 24, false);
 
 				addOffset('idle');
-				addOffset("singLEFT", 115, -10);
+				if (!isPlayer) {
+					addOffset("singLEFT", 115, -10);
+					addOffset("singRIGHT", -150, 18);
+				} else {
+					addOffset("singRIGHT", 115, -10);
+					addOffset("singLEFT", -150, 18);
+				}
 				addOffset("singDOWN", 27, -20);
 				addOffset("singUP", 30, 100);
-				addOffset("singRIGHT", -150, 18);
 
 				playAnim('idle');
 
@@ -84,16 +97,24 @@ class Character extends FlxSprite {
 				barColor = 0xFFaf66ce;
 				camPos = [200, -150];
 			case 'bf':
+				nativelyPlayable = true;
 				frames = Paths.getSparrowAtlas('characters/BOYFRIEND', 'shared');
 
 				animation.addByPrefix('idle', 'BF idle dance', 24, false);
 				animation.addByPrefix('singUP', 'BF NOTE UP0', 24, false);
-				animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
-				animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
+				if (isPlayer) {
+					animation.addByPrefix('singLEFT', 'BF NOTE LEFT0', 24, false);
+					animation.addByPrefix('singRIGHT', 'BF NOTE RIGHT0', 24, false);
+					animation.addByPrefix('singLEFT-miss', 'BF NOTE LEFT MISS', 24, false);
+					animation.addByPrefix('singRIGHT-miss', 'BF NOTE RIGHT MISS', 24, false);
+				} else {
+					animation.addByPrefix('singRIGHT', 'BF NOTE LEFT0', 24, false);
+					animation.addByPrefix('singLEFT', 'BF NOTE RIGHT0', 24, false);
+					animation.addByPrefix('singRIGHT-miss', 'BF NOTE LEFT MISS', 24, false);
+					animation.addByPrefix('singLEFT-miss', 'BF NOTE RIGHT MISS', 24, false);
+				}
 				animation.addByPrefix('singDOWN', 'BF NOTE DOWN0', 24, false);
 				animation.addByPrefix('singUP-miss', 'BF NOTE UP MISS', 24, false);
-				animation.addByPrefix('singLEFT-miss', 'BF NOTE LEFT MISS', 24, false);
-				animation.addByPrefix('singRIGHT-miss', 'BF NOTE RIGHT MISS', 24, false);
 				animation.addByPrefix('singDOWN-miss', 'BF NOTE DOWN MISS', 24, false);
 				animation.addByPrefix('hey', 'BF HEY', 24, false);
 
@@ -105,12 +126,19 @@ class Character extends FlxSprite {
 
 				addOffset('idle', -5);
 				addOffset("singUP", -29, 27);
-				addOffset("singRIGHT", -38, -7);
-				addOffset("singLEFT", 12, -6);
+				if (isPlayer) {
+					addOffset("singRIGHT", -38, -7);
+					addOffset("singLEFT", 12, -6);
+					addOffset("singRIGHT-miss", -30, 21);
+					addOffset("singLEFT-miss", 12, 24);
+				} else {
+					addOffset("singLEFT", -38, -7);
+					addOffset("singRIGHT", 12, -6);
+					addOffset("singLEFT-miss", -30, 21);
+					addOffset("singRIGHT-miss", 12, 24);
+				}
 				addOffset("singDOWN", -10, -50);
 				addOffset("singUPmiss", -29, 27);
-				addOffset("singRIGHTmiss", -30, 21);
-				addOffset("singLEFTmiss", 12, 24);
 				addOffset("singDOWNmiss", -11, -19);
 				addOffset("hey", 7, 4);
 				addOffset('firstDeath', 37, 11);
@@ -159,10 +187,13 @@ class Character extends FlxSprite {
 
 	public function playAnim(AnimName:String, Force:Bool = false, Reversed:Bool = false, Frame:Int = 0):Void {
 		animation.play(AnimName, Force, Reversed, Frame);
+		var offsetter:Int = 1;
+		if ((nativelyPlayable && !isPlayer) || (!nativelyPlayable && isPlayer))
+			offsetter = -1;
 
 		var daOffset = animOffsets.get(AnimName);
 		if (animOffsets.exists(AnimName)) {
-			offset.set(daOffset[0], daOffset[1]);
+			offset.set(daOffset[0] * offsetter, daOffset[1]);
 		} else
 			offset.set(0, 0);
 

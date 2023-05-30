@@ -22,7 +22,6 @@ class Boyfriend extends Character {
 				playAnim('deathLoop');
 			}
 		}
-
 		super.update(elapsed);
 	}
 }
