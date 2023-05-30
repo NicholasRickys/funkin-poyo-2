@@ -8,17 +8,17 @@
 		{
 			"name":"lime",
 			"type":"install",
-			"version":"7.9.0"
+			"version":null
 		},
 		{
 			"name":"openfl",
 			"type":"install",
-			"version":"9.2.0"
+			"version":null
 		},
 		{
 			"name":"flixel",
 			"type":"install",
-			"version":"4.11.0"
+			"version":null
 		},
 		{
 			"name":"hscript",
