@@ -3,6 +3,7 @@ package;
 import flixel.group.FlxSpriteGroup;
 import flixel.FlxSprite;
 import flixel.math.FlxMath;
+import PlayState;
 
 class Stage extends FlxSpriteGroup {
 	public var curStage:String = 'stage';
@@ -17,7 +18,7 @@ class Stage extends FlxSpriteGroup {
 				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('bg', 'nafri'));
 				bg.antialiasing = true;
 				add(bg);
-				PlayState.instance.cameraZoom = 0.8
+				PlayState.instance.cameraZoom = 0.8;
 				BF_COORDS[0] = 1631;
 				BF_COORDS[1] = 1031;
 				DAD_COORDS[0] = 690;
