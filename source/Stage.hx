@@ -13,7 +13,7 @@ class Stage extends FlxSpriteGroup {
 	public function new(stageName:String) {
 		super();
 		switch (stageName) {
-			'moneyscircle':
+			case 'moneyscircle':
 				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('bg', 'nafri'));
 				bg.antialiasing = true;
 				add(bg);
