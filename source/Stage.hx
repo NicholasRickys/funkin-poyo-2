@@ -37,7 +37,7 @@ class Stage extends FlxSpriteGroup {
 				GF_COORDS[0] = 919;
 				GF_COORDS[1] = 200;
 		}
-		curStage = stagename;
+		curStage = stageName;
 	}
 
 	public function returnStageXYWH() {

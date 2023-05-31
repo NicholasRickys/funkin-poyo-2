@@ -141,7 +141,7 @@ class PlayState extends MusicBeatState {
 	var timer:FlxText;
 	var info:FlxText;
 
-	var cameraZoom:Float = 1;
+	public var cameraZoom:Float = 1;
 	var cameraBop:Int = 4;
 	var cameraCanBop:Bool = true;
 	var manualCam:Bool = false;
