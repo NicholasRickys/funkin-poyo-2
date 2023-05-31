@@ -244,24 +244,12 @@ class PlayState extends MusicBeatState {
 				gfVersion = 'gf';
 		}
 
-		gf = new Character(0, 0, gfVersion);
+		gf = new Character(stage.GF_COORDS[0], stage.GF_COORDS[1], gfVersion);
 		gf.scrollFactor.set(0.95, 0.95);
-		dad = new Character(0, 0, SONG.player2);
-		boyfriend = new Boyfriend(0, 0, SONG.player1);
+		dad = new Character(stage.DAD_COORDS[0], stage.DAD_COORDS[1], SONG.player2);
+		boyfriend = new Boyfriend(stage.BF_COORDS[0], stage.BF_COORDS[1], SONG.player1);
 
-		switch (curStage)
-		{
-			case 'cityvspoyo':
-				boyfriend.x = 1480;
-				boyfriend.y = 500;
-				dad.x = 700;
-				dad.y = 240;
-				gf.x = 919;
-				gf.y = 200;
-				dad.camZoom = 0.8;
-				boyfriend.camZoom = 1;
-		}
-		if (!hideGf)
+		if (stage.VISIBLE_GF)
 			add(gf);
 		add(dad);
 		add(boyfriend);

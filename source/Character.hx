@@ -67,6 +67,7 @@ class Character extends FlxSprite {
 
 				barColor = 0xFFA2044B;
 			case 'poyo':
+				camZoom = 0.8;
 				frames = Paths.getSparrowAtlas('characters/PoyoSprites', 'poyo');
 
 				animation.addByPrefix('idle', 'poyo_boppin', 24, false);
@@ -97,6 +98,7 @@ class Character extends FlxSprite {
 				barColor = 0xFFaf66ce;
 				camPos = [200, -150];
 			case 'bf':
+				camZoom = 1
 				nativelyPlayable = true;
 				frames = Paths.getSparrowAtlas('characters/BOYFRIEND', 'shared');
 
