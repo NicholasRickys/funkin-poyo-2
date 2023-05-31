@@ -15,14 +15,14 @@ class Stage extends FlxSpriteGroup {
 		super();
 		switch (stageName) {
 			case 'moneyscircle':
-				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('bg', 'nafri'));
+				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('week2bg', 'poyo'));
 				bg.antialiasing = true;
 				add(bg);
 				PlayState.instance.cameraZoom = 0.8;
 				BF_COORDS[0] = 1631;
 				BF_COORDS[1] = 1031;
 				DAD_COORDS[0] = 690;
-				DAD_COORDS[1] = 1029;
+				DAD_COORDS[1] = 1031;
 				GF_COORDS[0] = 0;
 				GF_COORDS[1] = 0;
 				VISIBLE_GF = false;

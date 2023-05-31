@@ -22,16 +22,25 @@ using StringTools;
 class StoryMenuState extends MusicBeatState {
 	var scoreText:FlxText;
 
-	var weekData:Array<Dynamic> = [['Summer-Sunset', 'Energizer', 'Epic']];
+	var weekData:Array<Dynamic> = [
+		['Summer-Sunset', 'Energizer', 'Epic'],
+		['Challenger', 'Bars', 'Synergy']
+	];
 
 	public static var weekUnlocked:Array<Bool> = [true, true];
 	private static var lastDiff:String = '';
 
 	var curDifficulty:Int = 2;
 
-	var weekCharacters:Array<Dynamic> = [['', 'bf', 'gf']];
+	var weekCharacters:Array<Dynamic> = [
+		['', 'bf', 'gf'],
+		['', 'bf', 'gf']
+	];
 
-	var weekNames:Array<String> = [""];
+	var weekNames:Array<String> = [
+		"Poyo in --- Worried Warmup",
+		"Poyo in --- The City Showdown ft. Nafri"
+	];
 
 	var txtWeekTitle:FlxText;
 
