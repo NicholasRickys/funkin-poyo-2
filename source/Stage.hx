@@ -20,7 +20,7 @@ class Stage extends FlxSpriteGroup {
 				add(bg);
 				add(fg);
 
-				DAD_COORDS[0] = -10;
+				DAD_COORDS[0] = -40;
 				DAD_COORDS[1] = -5;
 				BF_COORDS[0] = 710;
 				BF_COORDS[1] = 100;

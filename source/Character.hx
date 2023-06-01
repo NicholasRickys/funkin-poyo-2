@@ -111,7 +111,7 @@ class Character extends FlxSprite {
 
 				specialTransition = true;
 				barColor = 0xFFaf66ce;
-				camPos = [200, -150];
+				camPos = [-200, -150];
 			case 'bf':
 				camZoom = 1;
 				nativelyPlayable = true;
