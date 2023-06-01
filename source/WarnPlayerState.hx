@@ -1,12 +1,12 @@
 package;
 
 import flixel.FlxG;
-import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
+import flixel.addons.ui.FlxUIState;
 
-class WarnPlayerState extends FlxState {
+class WarnPlayerState extends FlxUIState {
 	var warningText:FlxText;
 	var warningStr:String = "If you are prone to elipesy, VS Poyo Ultimate has a high chance to trigger seizures.\nWe don't have anyway to disable this as of right now.\nYou have been warned!";
 
