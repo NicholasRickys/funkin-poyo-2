@@ -5,6 +5,7 @@ import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
+import flixel.util.FlxColor;
 
 class WarnPlayerState extends FlxState {
 	var warningText:FlxText;
