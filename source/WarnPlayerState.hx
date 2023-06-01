@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxState;
 import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.util.FlxTimer;
