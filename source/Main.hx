@@ -16,7 +16,7 @@ import openfl.events.Event;
 class Main extends Sprite {
 	var gameWidth:Int = 1280;
 	var gameHeight:Int = 720;
-	var initialState:Class<FlxState> = TitleState;
+	var initialState:Class<FlxState> = WarnPlayerState;
 	var zoom:Float = -1;
 	var framerate:Int = 60;
 	var skipSplash:Bool = true;
@@ -61,7 +61,7 @@ class Main extends Sprite {
 		}
 
 		#if !debug
-		initialState = TitleState;
+		initialState = WarnPlayerState;
 		#end
 
 		game = new FlxGame(gameWidth, gameHeight, initialState, #if (flixel < '5.0.0') zoom, #end framerate, framerate, skipSplash, startFullscreen);
