@@ -1,7 +1,7 @@
 package;
 
 import flixel.FlxG;
-import FlxState;
+import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
