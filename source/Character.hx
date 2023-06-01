@@ -15,7 +15,7 @@ class Character extends FlxSprite {
 
 	public var holdTimer:Float = 0;
 
-	public var camPos:Array<Float> = [0, 0];
+	public var camPos:Array<Float> = [130, 0];
 	public var camZoom:Float = 1;
 
 	public var maxHTimer:Float = 4;
@@ -67,7 +67,8 @@ class Character extends FlxSprite {
 
 				barColor = 0xFFA2044B;
 			case 'whitty': // whitty reg (lofight,overhead)
-				camZoom = 0.65;
+				camZoom = 0.75;
+				camPos[0] = 400
 				frames = Paths.getSparrowAtlas('WhittySprites', 'bonusWeek');
 				animation.addByPrefix('idle', 'Idle', 24);
 				animation.addByPrefix('singUP', 'Sing Up', 24);

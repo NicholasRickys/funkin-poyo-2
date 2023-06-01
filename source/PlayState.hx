@@ -985,8 +985,8 @@ class PlayState extends MusicBeatState {
 			if (!manualCam && camGame.zoom != dad.camZoom * cameraZoom && !PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
 				camGame.zoom = FlxMath.lerp(dad.camZoom * cameraZoom, camGame.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125 * 1), 0, 1));
 
-			if (!manualCam && camFollow.x != boyfriend.getMidpoint().x + boyfriend.camPos[0] && PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
-				camFollow.setPosition(boyfriend.getMidpoint().x + boyfriend.camPos[0], boyfriend.getMidpoint().y + boyfriend.camPos[1]);
+			if (!manualCam && camFollow.x != boyfriend.getMidpoint().x - boyfriend.camPos[0] && PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
+				camFollow.setPosition(boyfriend.getMidpoint().x - boyfriend.camPos[0], boyfriend.getMidpoint().y + boyfriend.camPos[1]);
 			if (!manualCam && camGame.zoom != boyfriend.camZoom * cameraZoom && PlayState.SONG.notes[Std.int(curStep / 16)].mustHitSection)
 				camGame.zoom = FlxMath.lerp(boyfriend.camZoom * cameraZoom, camGame.zoom, CoolUtil.boundTo(1 - (elapsed * 3.125 * 1), 0, 1));
 
