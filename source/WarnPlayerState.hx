@@ -13,22 +13,22 @@ class WarnPlayerState extends FlxState {
 
 	override function create() {
 		warningText = new FlxText(0,0,0,warningStr,FlxG.width);
-		warningText.screenCenter();
 	
 		warningText.alpha = 0;
 		warningText.alignment = FlxTextAlign.CENTER;
-	
+		warningText.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(warningText);
+		warningText.screenCenter();
 	
 		FlxTween.tween(warningText, {alpha: 1}, 0.5, {
 			onComplete: function(tween:FlxTween) {
-				letsWait = new FlxTimer().start(4, function(_:FlxTimer):Void {
+				letsWait = new FlxTimer().start(4, function() {
 					FlxTween.tween(warningText, {alpha: 0}, 0.5, {
 						onComplete: function(tween:FlxTween) {
 							FlxG.switchState(new TitleState());
 						}
 					});
-				});
+				}, 4);
 			}
 		});
 	}
