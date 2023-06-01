@@ -65,10 +65,10 @@ class Character extends FlxSprite {
 
 				playAnim('danceRight');
 
-				barColor = 0xFFA2044B;
+				barColor = 0xFF;
 			case 'whitty': // whitty reg (lofight,overhead)
 				camZoom = 0.75;
-				camPos[0] = 400;
+				camPos = [300, -120];
 				frames = Paths.getSparrowAtlas('WhittySprites', 'bonusWeek');
 				animation.addByPrefix('idle', 'Idle', 24);
 				animation.addByPrefix('singUP', 'Sing Up', 24);
@@ -110,8 +110,8 @@ class Character extends FlxSprite {
 				playAnim('idle');
 
 				specialTransition = true;
-				barColor = 0xFFaf66ce;
-				camPos = [-200, -150];
+				barColor = 0xFFCA5A6B;
+				camPos = [200, -150];
 			case 'bf':
 				camZoom = 1;
 				nativelyPlayable = true;
@@ -166,7 +166,7 @@ class Character extends FlxSprite {
 				playAnim('idle');
 
 				flipX = true;
-				camPos = [-200, -120];
+				camPos = [200, -120];
 				barColor = 0xFF31b0d1;
 		}
 
