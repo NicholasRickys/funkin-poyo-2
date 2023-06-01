@@ -20,10 +20,10 @@ class WarnPlayerState extends FlxState {
 		add(warningText);
 	
 		FlxTween.tween(warningText, {alpha: 1}, 0.5, {
-			onComplete: function() {
-				new FlxTimer().start(5, function() {
-					FlxTween.tween(warningText, {alpha: 1}, 0.5, {
-						onComplete: function() {
+			onComplete: function(tween:FlxTween) {
+				new FlxTimer().start(4, function() {
+					FlxTween.tween(warningText, {alpha: 0}, 0.5, {
+						onComplete: function(tween:FlxTween) {
 							FlxG.switchState(new TitleState());
 						}
 					});
