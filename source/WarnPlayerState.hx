@@ -22,9 +22,9 @@ class WarnPlayerState extends FlxState {
 		FlxTween.tween(warningText, {alpha: 1}, 0.5, {
 			onComplete: function() {
 				new FlxTimer().start(5, function() {
-					FlxTween.tween(warningText, {alpha: 1}, 0.5, function() {
+					FlxTween.tween(warningText, {alpha: 1}, 0.5, {
 						onComplete: function() {
-							MusicBeatState.switchState(TitleState);
+							FlxG.switchState(new TitleState());
 						}
 					});
 				});
