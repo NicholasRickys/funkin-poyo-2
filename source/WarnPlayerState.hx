@@ -16,7 +16,7 @@ class WarnPlayerState extends FlxState {
 		warningText = new FlxText(0,0,0,warningStr,FlxG.width);
 	
 		warningText.alignment = FlxTextAlign.CENTER;
-		warningText.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		warningText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		add(warningText);
 		warningText.screenCenter();
 

@@ -16,6 +16,7 @@ class Stage extends FlxSpriteGroup {
 		switch (stageName) {
 			case 'alley':
 				var bg:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image('whittyBack', 'bonusWeek'));
+				bg.scrollFactor.set(0.75, 1);
 				var fg:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('whittyFront', 'bonusWeek'));
 				add(bg);
 				add(fg);
