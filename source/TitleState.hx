@@ -251,19 +251,26 @@ class TitleState extends MusicBeatState {
 
 		switch (curBeat) {
 			case 1:
-				createCoolText(['ninjamuffin99', 'phantomArcade', 'kawaisprite', 'evilsk8er']);
+				createCoolText(['A BUNCH OF IDIOTS']);
 			case 3:
+				createCoolText(['A BUNCH OF IDIOTS']);
 				addMoreText('present');
 			case 4:
 				deleteCoolText();
 			case 5:
-				createCoolText(['Kade Engine Legacy', 'by']);
+				createCoolText(['in association', 'with']);
 			case 7:
-				addMoreText('Goldie-5');
-				addMoreText('and');
-				addMoreText('Shyllis');
-			case 8:
 				deleteCoolText();
+				if (!skippedIntro)
+				{
+					FlxG.sound.music.fadeIn(0.01, 0.7, 0);
+				}
+				addMoreText('poyo');
+				ngSpr.visible = false;
+			case 8:
+				FlxG.sound.music.fadeIn(0.01, 0, 0.7);
+				deleteCoolText();
+				ngSpr.visible = false;
 			case 9:
 				createCoolText([curWacky[0]]);
 			case 11:
