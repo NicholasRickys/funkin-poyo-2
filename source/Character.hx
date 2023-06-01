@@ -67,8 +67,8 @@ class Character extends FlxSprite {
 
 				barColor = 0xFFA2044B;
 			case 'whitty': // whitty reg (lofight,overhead)
-				tex = Paths.getSparrowAtlas('WhittySprites', 'bonusWeek');
-				frames = tex;
+				camZoom = 0.65;
+				frames = Paths.getSparrowAtlas('WhittySprites', 'bonusWeek');
 				animation.addByPrefix('idle', 'Idle', 24);
 				animation.addByPrefix('singUP', 'Sing Up', 24);
 				animation.addByPrefix('singRIGHT', 'Sing Right', 24);
