@@ -4,9 +4,8 @@ import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.util.FlxTimer;
 import flixel.tweens.FlxTween;
-import flixel.addons.ui.FlxUIState;
 
-class WarnPlayerState extends FlxUIState {
+class WarnPlayerState extends FlxState {
 	var warningText:FlxText;
 	var warningStr:String = "If you are prone to elipesy, VS Poyo Ultimate has a high chance to trigger seizures.\nWe don't have anyway to disable this as of right now.\nYou have been warned!";
 
@@ -21,10 +20,10 @@ class WarnPlayerState extends FlxUIState {
 	
 		FlxTween.tween(warningText, {alpha: 1}, 0.5, {
 			onComplete: function() {
-				new FlxTimer().start(5, ()->{
+				new FlxTimer().start(5, function() {
 					FlxTween.tween(warningText, {alpha: 1}, 0.5, function() {
 						onComplete: function() {
-							FlxG.switchState(TitleState);
+							MusicBeatState.switchState(TitleState);
 						}
 					});
 				});
