@@ -9,6 +9,7 @@ import flixel.tweens.FlxTween;
 class WarnPlayerState extends FlxState {
 	var warningText:FlxText;
 	var warningStr:String = "If you are prone to elipesy, VS Poyo Ultimate has a high chance to trigger seizures.\nWe don't have anyway to disable this as of right now.\nYou have been warned!";
+	var letsWait:FlxTimer;
 
 	override function create() {
 		warningText = new FlxText(0,0,0,warningStr,FlxG.width);
@@ -21,7 +22,7 @@ class WarnPlayerState extends FlxState {
 	
 		FlxTween.tween(warningText, {alpha: 1}, 0.5, {
 			onComplete: function(tween:FlxTween) {
-				new FlxTimer().start(4, function():Void {
+				letsWait = new FlxTimer().start(4, function(_:FlxTimer):Void {
 					FlxTween.tween(warningText, {alpha: 0}, 0.5, {
 						onComplete: function(tween:FlxTween) {
 							FlxG.switchState(new TitleState());
