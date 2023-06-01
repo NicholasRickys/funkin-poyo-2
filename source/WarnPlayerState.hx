@@ -21,13 +21,13 @@ class WarnPlayerState extends FlxState {
 	
 		FlxTween.tween(warningText, {alpha: 1}, 0.5, {
 			onComplete: function(tween:FlxTween) {
-				new FlxTimer().start(4, {onComplete: function() {
+				new FlxTimer().start(4, ()->{
 					FlxTween.tween(warningText, {alpha: 0}, 0.5, {
 						onComplete: function(tween:FlxTween) {
 							FlxG.switchState(new TitleState());
 						}
 					});
-				}});
+				});
 			}
 		});
 	}
