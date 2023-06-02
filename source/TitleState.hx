@@ -21,9 +21,6 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import openfl.Assets;
-#if cpp
-import sys.thread.Thread;
-#end
 
 using StringTools;
 
@@ -37,8 +34,6 @@ class TitleState extends MusicBeatState {
 	var ngSpr:FlxSprite;
 
 	var curWacky:Array<String> = [];
-
-	var wackyImage:FlxSprite;
 
 	override public function create():Void {
 		#if android
