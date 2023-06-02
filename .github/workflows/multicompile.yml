@@ -31,8 +31,10 @@ jobs:
           sudo apt-get install libidn12
           sudo apt-get install libidn-dev
           haxelib setup ~/haxelib
-          haxelib --quiet install hxcpp > /dev/null
           haxe -cp ./actions -D analyzer-optimize -main Main --interp
+          haxelib --quiet install hxcpp 4.2.1 > /dev/null -y
+          haxelib set hxcpp 4.2.1
+
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
       - name: Compile
@@ -58,6 +60,8 @@ jobs:
           haxelib setup C:/haxelib
           haxelib --quiet install hxcpp > /dev/null
           haxe -cp ./actions -D analyzer-optimize -main Main --interp
+          haxelib --quiet install hxcpp 4.2.1 > /dev/null -y
+          haxelib set hxcpp 4.2.1
         shell: cmd
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
@@ -84,6 +88,8 @@ jobs:
           haxelib setup ~/haxelib
           haxelib --quiet install hxcpp > /dev/null
           haxe -cp ./actions -D analyzer-optimize -main Main --interp
+          haxelib --quiet install hxcpp 4.2.1 > /dev/null -y
+          haxelib set hxcpp 4.2.1
       - name: Create Version Tag
         run: echo "${{github.run_id}}" > VERSION
       - name: Compile
@@ -123,6 +129,8 @@ jobs:
           haxelib setup ~/haxelib
           haxelib --quiet install hxcpp > /dev/null
           haxe -cp ./actions -D analyzer-optimize -main Main --interp
+          haxelib --quiet install hxcpp 4.2.1 > /dev/null -y
+          haxelib set hxcpp 4.2.1
 
       - name: Configure Android
         run: |

@@ -1,11 +1,6 @@
 {
 	"dependencies":[
 		{
-			"name":"hxcpp",
-			"type":"install",
-			"version":"4.2.1"
-		},
-		{
 			"name":"lime",
 			"type":"install",
 			"version":null
