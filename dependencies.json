@@ -36,6 +36,13 @@
 			"version":null
 		},
 		{
+			"name":"discord_rpc",
+			"type":"git",
+			"dir":"discord_rpc",
+			"ref":"main",
+			"url":"https://github.com/Aidan63/linc_discord-rpc"
+		},
+		{
 			"name":"extension-androidtools",
 			"type":"git",
 			"dir":"extension-androidtools",
