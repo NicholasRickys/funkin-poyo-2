@@ -74,6 +74,6 @@ class Stage extends FlxTypedGroup<FlxSprite> {
 	public function setAlpha(newAlp:Float) {
 		forEachAlive(function(spr:FlxSprite) {
 			spr.alpha = newAlp;
-		}
+		});
 	}
 }
