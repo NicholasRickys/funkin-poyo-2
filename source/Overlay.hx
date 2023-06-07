@@ -29,7 +29,7 @@ class Overlay extends TextField {
 		selectable = false;
 		mouseEnabled = false;
 
-		defaultTextFormat = new TextFormat('_sans', Std.int(size * Math.min(Lib.current.stage.stageWidth / size_x, Lib.current.stage.stageHeight / size_y)),
+		defaultTextFormat = new TextFormat(Paths.font("vcr.ttf"), Std.int(size * Math.min(Lib.current.stage.stageWidth / size_x, Lib.current.stage.stageHeight / size_y)),
 			0xFFFFFF);
 
 		currentTime = 0;
