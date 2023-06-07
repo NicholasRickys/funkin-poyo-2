@@ -11,6 +11,10 @@ class Stage extends FlxTypedGroup<FlxSprite> {
 	public var GF_COORDS = [0,0];
 	public var DAD_COORDS = [0,0];
 	public var VISIBLE_GF = true;
+
+	// since we arent using sprite group anymore we had to compensate in a way
+	public var width:Float = 0;
+	public var height:Float = 0;
 	public function new(stageName:String) {
 		super();
 		switch (stageName) {
@@ -48,6 +52,9 @@ class Stage extends FlxTypedGroup<FlxSprite> {
 				GF_COORDS[1] = 200;
 		}
 		curStage = stageName;
+		var xywh = returnStageXYWH();
+		width = xywh[2];
+		height = xywh[3];
 	}
 
 	public function returnStageXYWH() {
@@ -62,5 +69,11 @@ class Stage extends FlxTypedGroup<FlxSprite> {
 			if (spr.height > height) height = spr.height;
 		});
 		return [x, y, width, height];
+	}
+
+	public function setAlpha(newAlp:Float) {
+		forEachAlive(function(spr:FlxSprite) {
+			spr.alpha = newAlp
+		}
 	}
 }

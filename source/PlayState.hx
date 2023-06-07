@@ -1674,7 +1674,7 @@ class PlayState extends MusicBeatState {
 				manualCam = false;
 				cameraCanBop = false;
 				camGame.flash(FlxColor.WHITE, 1);
-				stage.alpha = 0.62;
+				stage.setAlpha(0.62);
 			}
 
 			if (curBeat == 248) {
@@ -1690,7 +1690,7 @@ class PlayState extends MusicBeatState {
 			}
 
 			if (curBeat == 320) {
-				stage.alpha = 1;
+				stage.setAlpha(1);
 				cameraZoom = 1;
 				gfSpeed = 1;
 				cameraBop = 4;
