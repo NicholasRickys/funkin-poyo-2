@@ -1,11 +1,11 @@
 package;
 
-import flixel.group.FlxSpriteGroup;
+import flixel.group.FlxGroup;
 import flixel.FlxSprite;
 import flixel.math.FlxMath;
 import PlayState;
 
-class Stage extends FlxSpriteGroup {
+class Stage extends FlxTypedGroup<FlxSprite> {
 	public var curStage:String = 'stage';
 	public var BF_COORDS = [0,0];
 	public var GF_COORDS = [0,0];
