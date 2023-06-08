@@ -1396,7 +1396,6 @@ class PlayState extends MusicBeatState {
 		// seperatedScore.reverse();
 
 		var daLoop:Int = 1;
-		var maxLoop:Int = seperatedScore.length;
 		for (i in seperatedScore)
 		{
 			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image('num' + Std.int(i)));
@@ -1575,8 +1574,8 @@ class PlayState extends MusicBeatState {
 
 		if (!note.wasGoodHit) {
 			if (!note.isSustainNote) {
-				popUpScore(note);
 				combo++;
+				popUpScore(note);
 			} else
 				totalNotesHit += 1;
 
