@@ -1298,7 +1298,7 @@ class PlayState extends MusicBeatState {
 
 		var placement:String = Std.string(combo);
 
-		var lastRating = player ? lastRating1 : lastRating2;
+		var lastRating:FlxSprite = player ? lastRating1 : lastRating2;
 
 		var rating:FlxSprite = new FlxSprite();
 		var daRating = daNote.rating;
@@ -1369,7 +1369,7 @@ class PlayState extends MusicBeatState {
 			rating.setGraphicSize(Std.int(rating.width * 0.7));
 			rating.updateHitbox();
 			rating.x = strumToUse.members[2].x - (rating.width/2);
-			rating.y = FlxG.save.data.downscroll ? strumToUse.members[2].y - rating.height : strumToUse.members[2].y + strumToUse.members[2].height;
+			rating.y = FlxG.save.data.downscroll ? strumToUse.members[2].y - (120 * 0.7) : strumToUse.members[2].y + strumToUse.members[2].height;
 			lastRating = rating;
 			if (!FlxG.save.data.botplay)
 				add(rating);
@@ -1387,7 +1387,7 @@ class PlayState extends MusicBeatState {
 				startDelay: Conductor.crochet * 0.001
 			});
 		}
-		if (player) {
+		if (player && FlxG.save.data.ratings) {
 			var seperatedScore:Array<Int> = [];
 			var tempCombo:Int = combo;
 			for (spr in lastCombo) {
@@ -1413,7 +1413,7 @@ class PlayState extends MusicBeatState {
 				numScore.setGraphicSize(Std.int(numScore.width * 0.5));
 				numScore.updateHitbox();
 		
-				numScore.y = FlxG.save.data.downscroll ? rating.y - (120 * 0.5) - 10 : rating.y + rating.height + 10;
+				numScore.y = FlxG.save.data.downscroll ? rating.y - (120 * 0.5) - 10 : rating.y + (120 * 0.7);
 		
 				numScore.x = strumToUse.members[2].x - (43 * daLoop) + (43 * (seperatedScore.length / 2));
 				numScore.cameras = [camHUD];
