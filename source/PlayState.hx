@@ -1395,7 +1395,7 @@ class PlayState extends MusicBeatState {
 					spr.kill();
 			}
 
-			lastCombo = []
+			lastCombo = [];
 		
 			while (tempCombo != 0)
 			{
