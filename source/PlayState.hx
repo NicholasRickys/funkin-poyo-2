@@ -1364,7 +1364,7 @@ class PlayState extends MusicBeatState {
 			rating.setGraphicSize(Std.int(rating.width * 0.7));
 			rating.updateHitbox();
 			rating.x = strumToUse.members[2].x - (rating.width/2);
-			rating.y = FlxG.save.data.downscroll ? strumToUse.members[2].y - rating.height : strumToUse.members[2].y + rating.height;
+			rating.y = FlxG.save.data.downscroll ? strumToUse.members[2].y - rating.height : strumToUse.members[2].y + strumToUse.members[2].height;
 
 			if (!FlxG.save.data.botplay)
 				add(rating);
