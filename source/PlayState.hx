@@ -1361,19 +1361,19 @@ class PlayState extends MusicBeatState {
 				lastRating.kill();
 			}
 			rating.loadGraphic(Paths.image(daRating, 'shared'));
-			rating.x = strumToUse.members[2].x - 60;
+			rating.setGraphicSize(Std.int(rating.width * 0.7));
+			rating.updateHitbox();
+			rating.x = strumToUse.members[2].x - rating.width;
 			rating.y = FlxG.save.data.downscroll ? strumToUse.members[2].y - rating.height : strumToUse.members[2].y + rating.height;
-			rating.acceleration.y = 550;
-			rating.velocity.y -= FlxG.random.int(140, 175);
 
 			if (!FlxG.save.data.botplay)
 				add(rating);
 
-			rating.setGraphicSize(Std.int(rating.width * 0.7));
 			rating.antialiasing = true;
 			rating.updateHitbox();
 			rating.cameras = [camHUD];
 
+			FlxTween.tween(rating.scale, {x: 0.7 * 0.7, y: 0.7 * 0.7}, Conductor.crochet * 0.001, {ease: FlxEase.cubeOut});
 			FlxTween.tween(rating, {alpha: 0}, 0.2, {
 				onComplete: function(tween:FlxTween)
 				{
