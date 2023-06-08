@@ -57,7 +57,8 @@ class PlayState extends MusicBeatState {
 	public static var goods:Int = 0;
 	public static var sicks:Int = 0;
 
-	var lastRating:FlxSprite;
+	var lastRating1:FlxSprite;
+	var lastRating2:FlxSprite;
 
 	public static var noteAnimations:Array<String> = ['singLEFT', 'singDOWN', 'singUP', 'singRIGHT'];
 	var songLength:Float = 0;
@@ -102,6 +103,8 @@ class PlayState extends MusicBeatState {
 
 	var playerChar:Character;
 	var opponentChar:Character;
+
+	var lastCombo:Array<FlxSprite> = [];
 
 	var songScore_2:Int = 0;
 
@@ -1295,6 +1298,8 @@ class PlayState extends MusicBeatState {
 
 		var placement:String = Std.string(combo);
 
+		var lastRating = player ? lastRating1 : lastRating2;
+
 		var rating:FlxSprite = new FlxSprite();
 		var daRating = daNote.rating;
 		var score:Float = 350;
@@ -1365,7 +1370,7 @@ class PlayState extends MusicBeatState {
 			rating.updateHitbox();
 			rating.x = strumToUse.members[2].x - (rating.width/2);
 			rating.y = FlxG.save.data.downscroll ? strumToUse.members[2].y - rating.height : strumToUse.members[2].y + strumToUse.members[2].height;
-
+			lastRating = rating;
 			if (!FlxG.save.data.botplay)
 				add(rating);
 
@@ -1385,6 +1390,12 @@ class PlayState extends MusicBeatState {
 		if (player) {
 			var seperatedScore:Array<Int> = [];
 			var tempCombo:Int = combo;
+			for (spr in lastCombo) {
+				if (spr != null)
+					spr.kill();
+			}
+
+			lastCombo = []
 		
 			while (tempCombo != 0)
 			{
@@ -1406,6 +1417,7 @@ class PlayState extends MusicBeatState {
 		
 				numScore.x = strumToUse.members[2].x - (43 * daLoop) + (43 * (seperatedScore.length / 2));
 				numScore.cameras = [camHUD];
+				lastCombo.push(numScore);
 				add(numScore);
 		
 				FlxTween.tween(numScore.scale, {x: 0.8 * 0.5, y: 0.8 * 0.5}, Conductor.crochet * 0.001, {ease: FlxEase.cubeOut});
