@@ -1382,6 +1382,45 @@ class PlayState extends MusicBeatState {
 				startDelay: Conductor.crochet * 0.001
 			});
 		}
+		var seperatedScore:Array<Int> = [];
+		var tempCombo:Int = combo;
+
+		while (tempCombo != 0)
+		{
+			seperatedScore.push(tempCombo % 10);
+			tempCombo = Std.int(tempCombo / 10);
+		}
+		while (seperatedScore.length < 3)
+			seperatedScore.push(0);
+
+		// seperatedScore.reverse();
+
+		var daLoop:Int = 1;
+		var maxLoop:Int = seperatedScore.length;
+		for (i in seperatedScore)
+		{
+			var numScore:FlxSprite = new FlxSprite().loadGraphic(Paths.image('num' + Std.int(i)));
+			numScore.antialiasing = true;
+
+			numScore.setGraphicSize(Std.int(numScore.width * 0.5));
+			numScore.updateHitbox();
+
+			numScore.y = FlxG.save.data.downscroll ? rating.y - (120 * 0.5) - 10 : rating.y + rating.height + 10;
+
+			numScore.x = strumToUse.members[2].x + (43 * daLoop) - (43 * (seperatedScore.length / 2);
+			add(numScore);
+
+			FlxTween.tween(rating.scale, {x: 0.9 * 0.5, y: 0.9 * 0.5}, Conductor.crochet * 0.001, {ease: FlxEase.cubeOut});
+			FlxTween.tween(numScore, {alpha: 0}, 0.2, {
+				onComplete: function(tween:FlxTween)
+				{
+					numScore.destroy();
+				},
+				startDelay: Conductor.crochet * 0.002
+			});
+
+			daLoop++;
+		}
 		curSection += 1;
 	}
 
