@@ -1406,7 +1406,7 @@ class PlayState extends MusicBeatState {
 
 			numScore.y = FlxG.save.data.downscroll ? rating.y - (120 * 0.5) - 10 : rating.y + rating.height + 10;
 
-			numScore.x = strumToUse.members[2].x + (43 * daLoop) - (43 * (seperatedScore.length / 2);
+			numScore.x = strumToUse.members[2].x + (43 * daLoop) - (43 * (seperatedScore.length / 2));
 			add(numScore);
 
 			FlxTween.tween(rating.scale, {x: 0.9 * 0.5, y: 0.9 * 0.5}, Conductor.crochet * 0.001, {ease: FlxEase.cubeOut});
