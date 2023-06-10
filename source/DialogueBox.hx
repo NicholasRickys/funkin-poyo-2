@@ -54,16 +54,17 @@ class DialogueBox extends MusicBeatSubstate {
 		portraitLeft.scrollFactor.set();
 		portraitLeft.screenCenter(Y);
 		add(portraitLeft);
-		portraitLeft.visible = false;
 
 		portraitRight = new Character(FlxG.width - 40, FlxG.height / 2 - 100, bfName);
 		portraitRight.scrollFactor.set();
 		portraitRight.x -= portraitLeft.width;
 		portraitRight.screenCenter(Y);
 		add(portraitRight);
-		portraitRight.visible = false;
 
 		add(box);
+
+		portraitLeft.dance();
+		portraitRight.dance();
 
 		swagDialogue = new FlxTypeText(240, 500, Std.int(FlxG.width * 0.6), "", 32);
 		swagDialogue.font = 'PhantomMuff 1.5';

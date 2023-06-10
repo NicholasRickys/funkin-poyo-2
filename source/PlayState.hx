@@ -23,6 +23,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
 import flixel.util.FlxStringUtil;
+import DialogueFunctions
 import lime.utils.Assets;
 #if hxCodec
 #if (hxCodec == "2.6.0") 
@@ -406,7 +407,7 @@ class PlayState extends MusicBeatState {
 		switch (curSong.toLowerCase())
 		{
 			default:
-				openSubState(new DialogueBox(boyfriend.curCharacter, dad.curCharacter, gf.curCharacter));
+				DialogueFunctions.newDiag();
 		}
 
 		super.create();
