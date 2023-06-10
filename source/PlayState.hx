@@ -406,7 +406,7 @@ class PlayState extends MusicBeatState {
 		switch (curSong.toLowerCase())
 		{
 			default:
-				openSubState(new DialogueBox(boyfriend.curCharacter, dad.curCharacter, gf.curCharacter);
+				openSubState(new DialogueBox(boyfriend.curCharacter, dad.curCharacter, gf.curCharacter));
 		}
 
 		super.create();
