@@ -53,11 +53,13 @@ class DialogueBox extends FlxSpriteGroup {
 		if (PlayState.instance.dad != null) {
 			portraitLeft = new Character(40, FlxG.height / 2 - 100, PlayState.instance.dad.curCharacter);
 			portraitLeft.scrollFactor.set();
+			portraitLeft.screenCenter(Y);
 			add(portraitLeft);
 			portraitLeft.visible = false;
 		} else {
 			portraitLeft = new Character(40, FlxG.height / 2 - 100, 'poyo');
 			portraitLeft.scrollFactor.set();
+			portraitLeft.screenCenter(Y);
 			add(portraitLeft);
 			portraitLeft.visible = false;
 		}
@@ -66,6 +68,7 @@ class DialogueBox extends FlxSpriteGroup {
 			portraitRight = new Character(FlxG.width - 40, FlxG.height / 2 - 100, PlayState.instance.boyfriend.curCharacter);
 			portraitRight.scrollFactor.set();
 			portraitRight.x -= portraitLeft.width;
+			portraitRight.screenCenter(Y);
 			add(portraitRight);
 			portraitRight.visible = false;
 		} else {
@@ -73,6 +76,7 @@ class DialogueBox extends FlxSpriteGroup {
 			portraitRight.scrollFactor.set();
 			portraitRight.x -= portraitLeft.width;
 			add(portraitRight);
+			portraitRight.screenCenter(Y);
 			portraitRight.visible = false;
 		}
 		add(box);
@@ -205,7 +209,7 @@ class DialogueBox extends FlxSpriteGroup {
 
 	function cleanDialog():Void {
 		var splitName:Array<String> = dialogueList[0].split(":");
-		curCharacter = splitName[1];
-		dialogueList[0] = dialogueList[0].substr(splitName[1].length + 2).trim();
+		curCharacter = splitName[0];
+		dialogueList[0] = splitName[1];
 	}
 }
