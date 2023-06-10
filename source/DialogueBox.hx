@@ -38,7 +38,7 @@ class DialogueBox extends FlxSpriteGroup {
 
 	var bgFade:FlxSprite;
 
-	public function new(talkingRight:Bool = true, ?dialogueList:Array<String>) {
+	public function new(talkingRight:Bool = true) {
 		super();
 
 		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFF000000);

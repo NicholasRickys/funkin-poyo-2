@@ -406,7 +406,7 @@ class PlayState extends MusicBeatState {
 		switch (curSong.toLowerCase())
 		{
 			default:
-				var doof:DialogueBox = new DialogueBox(false, dialogue);
+				var doof:DialogueBox = new DialogueBox(false);
 				// doof.x += 70;
 				// doof.y = FlxG.height * 0.5;
 				doof.scrollFactor.set();
