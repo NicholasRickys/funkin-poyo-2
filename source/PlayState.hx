@@ -75,9 +75,9 @@ class PlayState extends MusicBeatState {
 	private var P2vocals:FlxSound;
 	private var SepVocalsNull:Bool = false;
 
-	public static var dad:Character;
-	public static var gf:Character;
-	public static var boyfriend:Boyfriend;
+	public var dad:Character;
+	public var gf:Character;
+	public var boyfriend:Boyfriend;
 
 	public var notes:FlxTypedGroup<Note>;
 
