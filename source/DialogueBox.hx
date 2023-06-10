@@ -3,6 +3,7 @@ package;
 import Controls.Device;
 import lime.ui.Gamepad;
 import Controls.Control;
+import Character;
 import sys.io.File;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -13,6 +14,8 @@ import flixel.input.FlxKeyManager;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import flixel.tweens.FlxEase;
+import flixel.tweens.FlxTween;
 
 using StringTools;
 
@@ -22,7 +25,7 @@ class DialogueBox extends FlxSpriteGroup {
 	var curCharacter:String = '';
 
 	var dialogue:Alphabet;
-	var dialogueList:Array<String> = [];
+	var dialogueList:Array<String> = ['bf:test', 'dad:breh'];
 
 	var swagDialogue:FlxTypeText;
 
@@ -30,117 +33,61 @@ class DialogueBox extends FlxSpriteGroup {
 
 	public var finishThing:Void->Void;
 
-	var portraitLeft:FlxSprite;
-	var portraitRight:FlxSprite;
+	var portraitLeft:Character;
+	var portraitRight:Character;
 
 	var bgFade:FlxSprite;
 
 	public function new(talkingRight:Bool = true, ?dialogueList:Array<String>) {
 		super();
 
-		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFFB3DFd8);
+		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFF000000);
 		bgFade.scrollFactor.set();
 		bgFade.alpha = 0;
 		add(bgFade);
 
-		new FlxTimer().start(0.83, function(tmr:FlxTimer) {
-			bgFade.alpha += (1 / 5) * 0.7;
-			if (bgFade.alpha > 0.7)
-				bgFade.alpha = 0.7;
-		}, 5);
+		FlxTween.tween(bgFade, {alpha: 0.5}, 0.83);
 
-		box = new FlxSprite(-20, 45);
+		box = new FlxSprite(0, FlxG.height / 2).makeGraphic(Std.int(FlxG.width), Std.int(FlxG.height / 2), 0xFF000000);
 
-		var hasDialog = true;
-
-		switch (PlayState.SONG.song.toLowerCase()) {
-			default:
-				box.frames = Paths.getSparrowAtlas('speech_bubble_talking', 'shared');
-				box.animation.addByPrefix('normalOpen', 'Speech Bubble Normal Open', 24, false);
-				box.animation.addByIndices('normal', 'speech bubble normal', [11], "", 24);
-				box.width = 225;
-				box.height = 125;
-				box.x = -500;
-				box.y = 375;
-		}
-
-		this.dialogueList = dialogueList;
-		
-		if (!hasDialog)
-			return;
-
-		if (PlayState.SONG.player2 != null) {
-			portraitLeft = new FlxSprite(-20, 40);
-			portraitLeft.frames = Paths.getSparrowAtlas('dialogue/' + PlayState.SONG.player2 + 'Dialogue', 'shared');
-			portraitLeft.animation.addByPrefix('enter', 'Dialogue Enter', 24, false);
-			portraitLeft.updateHitbox();
+		if (PlayState.instance.dad != null) {
+			portraitLeft = new Character(40, FlxG.height / 2 - 100, PlayState.instance.dad.curCharacter);
 			portraitLeft.scrollFactor.set();
 			add(portraitLeft);
 			portraitLeft.visible = false;
 		} else {
-			portraitLeft = new FlxSprite(-20, 40);
-			portraitLeft.frames = Paths.getSparrowAtlas('dialogue/dadDialogue', 'shared');
-			portraitLeft.animation.addByPrefix('enter', 'Dialogue Enter', 24, false);
-			portraitLeft.updateHitbox();
+			portraitLeft = new Character(40, FlxG.height / 2 - 100, 'poyo');
 			portraitLeft.scrollFactor.set();
 			add(portraitLeft);
 			portraitLeft.visible = false;
 		}
 
-		if (PlayState.SONG.player1 != null) {
-			portraitRight = new FlxSprite(0, 40);
-			portraitRight.frames = Paths.getSparrowAtlas('dialogue/' + PlayState.SONG.player1 + 'Dialogue', 'shared');
-			portraitRight.animation.addByPrefix('enter', 'Dialogue Enter', 24, false);
-			portraitRight.updateHitbox();
+		if (PlayState.instance.boyfriend != null) {
+			portraitRight = new Character(FlxG.width - 40, FlxG.height / 2 - 100, PlayState.instance.boyfriend.curCharacter);
 			portraitRight.scrollFactor.set();
+			portraitRight.x -= portraitLeft.width;
 			add(portraitRight);
 			portraitRight.visible = false;
 		} else {
-            portraitRight = new FlxSprite(0, 40);
-            portraitRight.frames = Paths.getSparrowAtlas('dialogue/bfDialogue', 'shared');
-            portraitRight.animation.addByPrefix('enter', 'Dialogue Enter', 24, false);
-            portraitRight.updateHitbox();
-            portraitRight.scrollFactor.set();
-            add(portraitRight);
-            portraitRight.visible = false;
+			portraitRight = new Character(FlxG.width - 40, FlxG.height / 2 - 100, 'bf');
+			portraitRight.scrollFactor.set();
+			portraitRight.x -= portraitLeft.width;
+			add(portraitRight);
+			portraitRight.visible = false;
 		}
-		
-		box.animation.play('normalOpen');
-		box.updateHitbox();
 		add(box);
-
-		box.screenCenter(X);
-		portraitLeft.screenCenter(X);
-
-		dropText = new FlxText(242, 502, Std.int(FlxG.width * 0.6), "", 32);
-		dropText.font = 'PhantomMuff 1.5';
-		dropText.color = 0xFFD89494;
-		dropText.visible = false;
-		add(dropText);
 
 		swagDialogue = new FlxTypeText(240, 500, Std.int(FlxG.width * 0.6), "", 32);
 		swagDialogue.font = 'PhantomMuff 1.5';
-		swagDialogue.color = 0xFF000000;
+		swagDialogue.color = 0xFFFFFFFF;
 		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
 		add(swagDialogue);
-
-		dialogue = new Alphabet(0, 80, "", false, true);
 	}
 
 	var dialogueOpened:Bool = false;
 	var dialogueStarted:Bool = false;
 
 	override function update(elapsed:Float) {
-		dropText.color = FlxColor.BLACK;
-		dropText.text = swagDialogue.text;
-
-		if (box.animation.curAnim != null) {
-			if (box.animation.curAnim.name == 'normalOpen' && box.animation.curAnim.finished) {
-				box.animation.play('normal');
-				dialogueOpened = true;
-			}
-		}
-
 		if (dialogueOpened && !dialogueStarted) {
 			startDialogue();
 			dialogueStarted = true;
@@ -158,11 +105,6 @@ class DialogueBox extends FlxSpriteGroup {
 		}
 		
 		super.update(elapsed);
-
-		if (portraitRight.visible && box.flipX)
-			box.flipX = false;
-		else if (!portraitRight.visible && !box.flipX)
-			box.flipX = true;
 	}
 
 	var isEnding:Bool = false;
@@ -182,7 +124,6 @@ class DialogueBox extends FlxSpriteGroup {
 					portraitLeft.visible = false;
 					portraitRight.visible = false;
 					swagDialogue.alpha -= 1 / 5;
-					dropText.alpha = swagDialogue.alpha;
 				}, 5);
 
 				new FlxTimer().start(1.2, function(tmr:FlxTimer) {

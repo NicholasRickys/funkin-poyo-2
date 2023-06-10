@@ -406,7 +406,11 @@ class PlayState extends MusicBeatState {
 		switch (curSong.toLowerCase())
 		{
 			default:
-				startCountdown();
+				var doof:DialogueBox = new DialogueBox(false, dialogue);
+				// doof.x += 70;
+				// doof.y = FlxG.height * 0.5;
+				doof.scrollFactor.set();
+				doof.finishThing = startCountdown;
 		}
 
 		super.create();
