@@ -19,7 +19,7 @@ import flixel.tweens.FlxTween;
 
 using StringTools;
 
-class DialogueBox extends FlxSpriteGroup {
+class DialogueBox extends MusicBeatSubstate {
 	var box:FlxSprite;
 
 	var curCharacter:String = '';
@@ -38,7 +38,7 @@ class DialogueBox extends FlxSpriteGroup {
 
 	var bgFade:FlxSprite;
 
-	public function new(talkingRight:Bool = true) {
+	public function new(bfName:String = 'poyo', dadName:String = 'poyo', gfName:String = 'poyo') {
 		super();
 
 		bgFade = new FlxSprite(-200, -200).makeGraphic(Std.int(FlxG.width * 1.3), Std.int(FlxG.height * 1.3), 0xFF000000);
@@ -50,35 +50,19 @@ class DialogueBox extends FlxSpriteGroup {
 
 		box = new FlxSprite(0, FlxG.height / 2).makeGraphic(Std.int(FlxG.width), Std.int(FlxG.height / 2), 0xFF000000);
 
-		if (PlayState.instance.dad != null) {
-			portraitLeft = new Character(40, FlxG.height / 2 - 100, PlayState.instance.dad.curCharacter);
-			portraitLeft.scrollFactor.set();
-			portraitLeft.screenCenter(Y);
-			add(portraitLeft);
-			portraitLeft.visible = false;
-		} else {
-			portraitLeft = new Character(40, FlxG.height / 2 - 100, 'poyo');
-			portraitLeft.scrollFactor.set();
-			portraitLeft.screenCenter(Y);
-			add(portraitLeft);
-			portraitLeft.visible = false;
-		}
+		portraitLeft = new Character(40, FlxG.height / 2 - 100, dadName);
+		portraitLeft.scrollFactor.set();
+		portraitLeft.screenCenter(Y);
+		add(portraitLeft);
+		portraitLeft.visible = false;
 
-		if (PlayState.instance.boyfriend != null) {
-			portraitRight = new Character(FlxG.width - 40, FlxG.height / 2 - 100, PlayState.instance.boyfriend.curCharacter);
-			portraitRight.scrollFactor.set();
-			portraitRight.x -= portraitLeft.width;
-			portraitRight.screenCenter(Y);
-			add(portraitRight);
-			portraitRight.visible = false;
-		} else {
-			portraitRight = new Character(FlxG.width - 40, FlxG.height / 2 - 100, 'bf');
-			portraitRight.scrollFactor.set();
-			portraitRight.x -= portraitLeft.width;
-			add(portraitRight);
-			portraitRight.screenCenter(Y);
-			portraitRight.visible = false;
-		}
+		portraitRight = new Character(FlxG.width - 40, FlxG.height / 2 - 100, bfName);
+		portraitRight.scrollFactor.set();
+		portraitRight.x -= portraitLeft.width;
+		portraitRight.screenCenter(Y);
+		add(portraitRight);
+		portraitRight.visible = false;
+
 		add(box);
 
 		swagDialogue = new FlxTypeText(240, 500, Std.int(FlxG.width * 0.6), "", 32);
