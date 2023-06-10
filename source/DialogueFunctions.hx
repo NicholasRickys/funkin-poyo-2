@@ -10,8 +10,7 @@ import flixel.tweens.FlxTween;
 import flixel.FlxCamera;
 
 class DialogueFunctions {
-	var diagText:FlxText;
-	public final function newDiag(diag:String, cam:FlxCamera) {
+	public static function newDiag(diagText:FlxText, diag:String, cam:FlxCamera) {
 		if (diagText == null) {
 			diagText = new FlxText(FlxG.width / 2, FlxG.height - 32, 0, 'test');
 			add(diagText);

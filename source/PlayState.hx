@@ -80,6 +80,8 @@ class PlayState extends MusicBeatState {
 	public var gf:Character;
 	public var boyfriend:Boyfriend;
 
+	var diagText:FlxText;
+
 	public var notes:FlxTypedGroup<Note>;
 
 	private var unspawnNotes:Array<Note> = [];
@@ -407,7 +409,7 @@ class PlayState extends MusicBeatState {
 		switch (curSong.toLowerCase())
 		{
 			default:
-				DialogueFunctions.newDiag();
+				DialogueFunctions.newDiag(diagText);
 		}
 
 		super.create();
