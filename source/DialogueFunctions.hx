@@ -11,7 +11,7 @@ import flixel.FlxCamera;
 
 class DialogueFunctions {
 	var diagText:FlxText;
-	public function newDiag(diag:String, cam:FlxCamera) {
+	public static function newDiag(diag:String, cam:FlxCamera) {
 		if (diagText == null) {
 			diagText = new FlxText(FlxG.width / 2, FlxG.height - 32, 0, 'test');
 			add(diagText);
