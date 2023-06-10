@@ -23,7 +23,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
 import flixel.util.FlxStringUtil;
-import DialogueFunctions
+import DialogueFunctions;
 import lime.utils.Assets;
 #if hxCodec
 #if (hxCodec == "2.6.0") 
