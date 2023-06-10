@@ -1009,7 +1009,7 @@ class PlayState extends MusicBeatState {
 					vocals.stop();
 			FlxG.sound.music.stop();
 
-			openSubState(new GameOverSubstate(boyfriend.getScreenPosition().x, boyfriend.getScreenPosition().y));
+			openSubState(new GameOverSubstate(playerChar.getScreenPosition().x, playerChar.getScreenPosition().y));
 
 			#if windows
 			DiscordClient.changePresence("GAME OVER -- "

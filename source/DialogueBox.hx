@@ -70,6 +70,8 @@ class DialogueBox extends MusicBeatSubstate {
 		swagDialogue.color = 0xFFFFFFFF;
 		swagDialogue.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
 		add(swagDialogue);
+
+		cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
 	}
 
 	var dialogueOpened:Bool = false;
