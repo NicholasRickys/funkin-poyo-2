@@ -10,14 +10,5 @@ import flixel.tweens.FlxTween;
 import flixel.FlxCamera;
 
 class DialogueFunctions {
-	public static function newDiag(diagText:FlxText, diag:String, cam:FlxCamera) {
-		if (diagText == null) {
-			diagText = new FlxText(FlxG.width / 2, FlxG.height - 32, 0, 'test');
-			add(diagText);
-			diagText.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, FlxTextAlign.CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-			diagText.cameras = [FlxG.cameras.list[FlxG.cameras.list.length - 1]];
-		} else {
-			diagText.text = 'test 2';
-		}
-	}
+	
 }

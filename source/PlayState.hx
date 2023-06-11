@@ -23,7 +23,6 @@ import flixel.util.FlxColor;
 import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
 import flixel.util.FlxStringUtil;
-import DialogueFunctions;
 import lime.utils.Assets;
 #if hxCodec
 #if (hxCodec == "2.6.0") 
@@ -409,7 +408,19 @@ class PlayState extends MusicBeatState {
 		switch (curSong.toLowerCase())
 		{
 			default:
-				DialogueFunctions.newDiag(diagText);
+				diagText = new FlxText(FlxG.width / 2, FlxG.height - 32, 0, 'test');
+				add(diagText);
+
+				diagText.text = 'testing dialogue';
+				camFollow.setPosition(dad.getMidpoint().x + dad.camPos[0], dad.getMidpoint().y + dad.camPos[1]);
+				new FlxTimer().start(5, function(tmr:FlxTimer) {
+					diagText.text = 'more test';
+					camFollow.setPosition(boyfriend.getMidpoint().x - boyfriend.camPos[0], boyfriend.getMidpoint().y + boyfriend.camPos[1]);
+					new FlxTimer().start(5, function(tmr:FlxTimer) {
+						diagText.visible = false;
+						startCountdown();
+					});
+				});
 		}
 
 		super.create();
