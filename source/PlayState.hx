@@ -407,20 +407,31 @@ class PlayState extends MusicBeatState {
 	
 		switch (curSong.toLowerCase())
 		{
-			default:
+			case 'summer-sunset':
 				diagText = new FlxText(FlxG.width / 2, FlxG.height - 32, 0, 'test');
+				diagText.cameras = [camHUD];
 				add(diagText);
 
-				diagText.text = 'testing dialogue';
+				diagText.text = 'yo';
 				camFollow.setPosition(dad.getMidpoint().x + dad.camPos[0], dad.getMidpoint().y + dad.camPos[1]);
 				new FlxTimer().start(5, function(tmr:FlxTimer) {
-					diagText.text = 'more test';
+					diagText.text = 'Bap';
 					camFollow.setPosition(boyfriend.getMidpoint().x - boyfriend.camPos[0], boyfriend.getMidpoint().y + boyfriend.camPos[1]);
 					new FlxTimer().start(5, function(tmr:FlxTimer) {
-						diagText.visible = false;
-						startCountdown();
+						diagText.text = 'random thing i need you to do, is urgent, can you sing a few songs with me?';
+						camFollow.setPosition(dad.getMidpoint().x + dad.camPos[0], dad.getMidpoint().y + dad.camPos[1]);
+						new FlxTimer().start(5, function(tmr:FlxTimer) {
+							diagText.text = 'Beep';
+							camFollow.setPosition(boyfriend.getMidpoint().x - boyfriend.camPos[0], boyfriend.getMidpoint().y + boyfriend.camPos[1]);
+							new FlxTimer().start(5, function(tmr:FlxTimer) {
+								diagText.visible = false;
+								startCountdown();
+							});
+						});
 					});
 				});
+			default:
+				startCountdown();
 		}
 
 		super.create();
@@ -438,70 +449,73 @@ class PlayState extends MusicBeatState {
 
 		startedCountdown = true;
 		Conductor.songPosition = 0;
-		Conductor.songPosition -= Conductor.crochet * 5;
+		if (curSong.toLowerCase() != 'summer-sunset')
+			Conductor.songPosition -= Conductor.crochet * 5;
 
 		var swagCounter:Int = 0;
 
-		startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer) {
-			dad.dance();
-			gf.dance();
-			boyfriend.dance();
-
-			var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
-			introAssets.set('default', ['ready', "set", "go"]);
-			var introAlts:Array<String> = introAssets.get('default');
-
-			switch (swagCounter) {
-				case 0:
-					FlxG.sound.play(Paths.sound('intro3', 'shared'), 0.6);
-				case 1:
-					var ready:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[0], 'shared'));
-					ready.scrollFactor.set();
-					ready.updateHitbox();
-					ready.screenCenter();
-					add(ready);
-
-					FlxTween.tween(ready, {alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween) {
-							ready.destroy();
-						}
-					});
-
-					FlxG.sound.play(Paths.sound('intro2', 'shared'), 0.6);
-				case 2:
-					var set:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[1], 'shared'));
-					set.scrollFactor.set();
-					set.screenCenter();
-					add(set);
-
-					FlxTween.tween(set, {alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween) {
-							set.destroy();
-						}
-					});
-
-					FlxG.sound.play(Paths.sound('intro1', 'shared'), 0.6);
-				case 3:
-					var go:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[2], 'shared'));
-					go.scrollFactor.set();
-					go.updateHitbox();
-					go.screenCenter();
-					add(go);
-
-					FlxTween.tween(go, {alpha: 0}, Conductor.crochet / 1000, {
-						ease: FlxEase.cubeInOut,
-						onComplete: function(twn:FlxTween) {
-							go.destroy();
-						}
-					});
-
-					FlxG.sound.play(Paths.sound('introGo', 'shared'), 0.6);
-			}
-
-			swagCounter += 1;
-		}, 4);
+		if (curSong.toLowerCase() != 'summer-sunset') {
+			startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer) {
+				dad.dance();
+				gf.dance();
+				boyfriend.dance();
+	
+				var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
+				introAssets.set('default', ['ready', "set", "go"]);
+				var introAlts:Array<String> = introAssets.get('default');
+	
+				switch (swagCounter) {
+					case 0:
+						FlxG.sound.play(Paths.sound('intro3', 'shared'), 0.6);
+					case 1:
+						var ready:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[0], 'shared'));
+						ready.scrollFactor.set();
+						ready.updateHitbox();
+						ready.screenCenter();
+						add(ready);
+	
+						FlxTween.tween(ready, {alpha: 0}, Conductor.crochet / 1000, {
+							ease: FlxEase.cubeInOut,
+							onComplete: function(twn:FlxTween) {
+								ready.destroy();
+							}
+						});
+	
+						FlxG.sound.play(Paths.sound('intro2', 'shared'), 0.6);
+					case 2:
+						var set:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[1], 'shared'));
+						set.scrollFactor.set();
+						set.screenCenter();
+						add(set);
+	
+						FlxTween.tween(set, {alpha: 0}, Conductor.crochet / 1000, {
+							ease: FlxEase.cubeInOut,
+							onComplete: function(twn:FlxTween) {
+								set.destroy();
+							}
+						});
+	
+						FlxG.sound.play(Paths.sound('intro1', 'shared'), 0.6);
+					case 3:
+						var go:FlxSprite = new FlxSprite().loadGraphic(Paths.image(introAlts[2], 'shared'));
+						go.scrollFactor.set();
+						go.updateHitbox();
+						go.screenCenter();
+						add(go);
+	
+						FlxTween.tween(go, {alpha: 0}, Conductor.crochet / 1000, {
+							ease: FlxEase.cubeInOut,
+							onComplete: function(twn:FlxTween) {
+								go.destroy();
+							}
+						});
+	
+						FlxG.sound.play(Paths.sound('introGo', 'shared'), 0.6);
+				}
+	
+				swagCounter += 1;
+			}, 4);
+		}
 	}
 
 	var previousFrameTime:Int = 0;
