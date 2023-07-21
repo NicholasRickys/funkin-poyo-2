@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="sarah.png">
+<SubTexture name="sarah Idle Dance0000" x="1725" y="1634" width="576" height="784" frameX="-225" frameY="-214" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Idle Dance0001" x="2591" y="772" width="605" height="770" frameX="-228" frameY="-227" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Idle Dance0002" x="2591" y="1542" width="611" height="770" frameX="-228" frameY="-227" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Idle Dance0003" x="1097" y="1634" width="628" height="785" frameX="-224" frameY="-214" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Idle Dance0004" x="1983" y="0" width="608" height="795" frameX="-224" frameY="-204" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Idle Dance0005" x="517" y="1634" width="580" height="793" frameX="-218" frameY="-207" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Idle Dance0006" x="1983" y="795" width="523" height="794" frameX="-217" frameY="-206" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Idle Dance0007" x="0" y="1634" width="517" height="794" frameX="-217" frameY="-206" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note LEFT0000" x="540" y="817" width="487" height="816" frameX="-181" frameY="-203" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note LEFT0001" x="1027" y="817" width="473" height="814" frameX="-176" frameY="-205" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note LEFT0002" x="0" y="0" width="474" height="817" frameX="-177" frameY="-202" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note LEFT0003" x="474" y="0" width="477" height="817" frameX="-196" frameY="-202" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note LEFT0004" x="951" y="0" width="505" height="817" frameX="-205" frameY="-202" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note LEFT0005" x="1456" y="0" width="527" height="817" frameX="-209" frameY="-202" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note LEFT0006" x="0" y="817" width="540" height="817" frameX="-213" frameY="-202" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note DOWN0000" x="3706" y="3198" width="635" height="543" frameX="-184" frameY="-461" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note DOWN0001" x="0" y="3915" width="632" height="529" frameX="-189" frameY="-474" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note DOWN0002" x="3074" y="3198" width="632" height="553" frameX="-190" frameY="-452" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note DOWN0003" x="2447" y="3198" width="627" height="582" frameX="-185" frameY="-425" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note DOWN0004" x="1206" y="3198" width="620" height="584" frameX="-181" frameY="-423" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note DOWN0005" x="1826" y="3198" width="621" height="584" frameX="-176" frameY="-423" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note UP0000" x="1309" y="2428" width="651" height="755" frameX="-143" frameY="-262" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note UP0001" x="2591" y="0" width="654" height="772" frameX="-143" frameY="-251" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note UP0002" x="0" y="2428" width="653" height="770" frameX="-144" frameY="-253" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note UP0003" x="653" y="2428" width="656" height="761" frameX="-140" frameY="-259" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note UP0004" x="1960" y="2428" width="639" height="745" frameX="-155" frameY="-273" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note UP0005" x="2599" y="2428" width="636" height="741" frameX="-157" frameY="-275" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note UP0006" x="3245" y="0" width="636" height="741" frameX="-157" frameY="-275" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note RIGHT0000" x="3245" y="741" width="591" height="726" frameX="-245" frameY="-308" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note RIGHT0001" x="3245" y="2191" width="582" height="723" frameX="-260" frameY="-311" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note RIGHT0002" x="3245" y="1467" width="582" height="724" frameX="-261" frameY="-310" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note RIGHT0003" x="3881" y="0" width="595" height="721" frameX="-239" frameY="-313" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note RIGHT0004" x="0" y="3198" width="598" height="717" frameX="-211" frameY="-317" frameWidth="993" frameHeight="1152" />
+<SubTexture name="sarah Sing Note RIGHT0005" x="598" y="3198" width="608" height="713" frameX="-200" frameY="-321" frameWidth="993" frameHeight="1152" />
+</TextureAtlas>

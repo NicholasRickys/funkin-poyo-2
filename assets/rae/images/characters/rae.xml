@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="rae.png">
+<SubTexture name="rae Idle Dance0000" x="1432" y="541" width="356" height="536" frameX="-116" frameY="-177" frameWidth="635" frameHeight="802" />
+<SubTexture name="rae Idle Dance0001" x="0" y="1145" width="357" height="536" frameX="-118" frameY="-177" frameWidth="635" frameHeight="802" />
+<SubTexture name="rae Idle Dance0002" x="1084" y="600" width="347" height="543" frameX="-130" frameY="-170" frameWidth="635" frameHeight="802" />
+<SubTexture name="rae Idle Dance0003" x="399" y="600" width="327" height="544" frameX="-145" frameY="-170" frameWidth="635" frameHeight="802" />
+<SubTexture name="rae Idle Dance0004" x="1108" y="0" width="324" height="545" frameX="-147" frameY="-169" frameWidth="635" frameHeight="802" />
+<SubTexture name="rae Sing Note LEFT0000" x="697" y="0" width="411" height="557" frameX="-52" frameY="-170" frameWidth="635" frameHeight="802" />
+<SubTexture name="rae Sing Note LEFT0001" x="0" y="600" width="399" height="545" frameX="-60" frameY="-182" frameWidth="635" frameHeight="802" />
+<SubTexture name="rae Sing Note DOWN0000" x="656" y="1145" width="323" height="405" frameX="-173" frameY="-305" frameWidth="635" frameHeight="802" />
+<SubTexture name="rae Sing Note DOWN0001" x="357" y="1145" width="299" height="419" frameX="-184" frameY="-291" frameWidth="635" frameHeight="802" />
+<SubTexture name="rae Sing Note UP0000" x="0" y="0" width="341" height="600" frameX="-149" frameY="-115" frameWidth="635" frameHeight="802" />
+<SubTexture name="rae Sing Note UP0001" x="341" y="0" width="356" height="596" frameX="-142" frameY="-120" frameWidth="635" frameHeight="802" />
+<SubTexture name="rae Sing Note RIGHT0000" x="1432" y="0" width="357" height="541" frameX="-218" frameY="-167" frameWidth="635" frameHeight="802" />
+<SubTexture name="rae Sing Note RIGHT0001" x="726" y="600" width="358" height="544" frameX="-210" frameY="-166" frameWidth="635" frameHeight="802" />
+</TextureAtlas>

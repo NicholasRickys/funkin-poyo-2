@@ -9,6 +9,10 @@ import flixel.util.FlxColor;
 
 class WarnPlayerState extends FlxState {
 	var warningText:FlxText;
+	// i know it says in honor of beans but we found out beans survived his offing
+	// hes in a coma
+	// but uhhhh he will be back soon!!!!!
+	// hooraY!!!
 	var warningStr:String = "In honor of Beans, a member who offed himself half a year ago.\n\nIf you are prone to elipesy,\nVS Poyo Ultimate has a high chance to trigger seizures.\nWe don't have anyway to disable this as of right now.\nYou have been warned!";
 	var letsWait:FlxTimer;
 

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="banette.png">
+<SubTexture name="banette Idle Dance0000" x="2554" y="2354" width="794" height="1101" frameX="-173" frameY="-111" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette Idle Dance0001" x="905" y="2354" width="782" height="1108" frameX="-180" frameY="-104" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette Idle Dance0002" x="1812" y="1194" width="793" height="1115" frameX="-158" frameY="-97" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette Idle Dance0003" x="912" y="1194" width="900" height="1150" frameX="-101" frameY="-62" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette Idle Dance0004" x="0" y="1194" width="912" height="1160" frameX="-90" frameY="-52" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette Sing Note LEFT0000" x="1687" y="2354" width="867" height="1108" frameX="-76" frameY="-104" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette Sing Note LEFT0001" x="2867" y="1115" width="881" height="1111" frameX="-63" frameY="-101" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette Sing Note LEFT0002" x="2867" y="0" width="914" height="1115" frameX="-37" frameY="-97" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette Sing Note DOWN0000" x="2130" y="3464" width="1074" height="977" frameX="-58" frameY="-235" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette Sing Note DOWN0001" x="1053" y="3464" width="1077" height="978" frameX="-57" frameY="-234" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette Sing Note DOWN0002" x="0" y="3464" width="1053" height="981" frameX="-72" frameY="-231" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette Sing Note UP0000" x="0" y="0" width="945" height="1194" frameX="-153" frameY="-18" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette Sing Note UP0001" x="945" y="0" width="957" height="1186" frameX="-144" frameY="-26" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette Sing Note UP0002" x="1902" y="0" width="965" height="1178" frameX="-134" frameY="-34" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette Sing Note RIGHT0000" x="0" y="2354" width="905" height="1110" frameX="-193" frameY="-102" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette Sing Note RIGHT0001" x="3781" y="0" width="897" height="1095" frameX="-210" frameY="-117" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette Sing Note RIGHT0002" x="3781" y="1095" width="878" height="1094" frameX="-229" frameY="-118" frameWidth="1267" frameHeight="1303" />
+<SubTexture name="banette a mimir0000" x="3781" y="2189" width="861" height="607" frameX="-382" frameY="-583" frameWidth="1280" frameHeight="1280" />
+</TextureAtlas>

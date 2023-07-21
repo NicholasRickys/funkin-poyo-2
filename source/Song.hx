@@ -5,6 +5,10 @@ import lime.utils.Assets;
 
 using StringTools;
 
+typedef SwagNote = {
+	var charactersSing:Array<Int>;
+}
+
 typedef SwagSection = {
 	var sectionNotes:Array<Dynamic>;
 	var lengthInSteps:Int;
@@ -56,6 +60,8 @@ class Song {
 		trace('loading ' + folderLowercase + '/' + jsonInput.toLowerCase());
 
 		var rawJson = Assets.getText(Paths.json(folderLowercase + '/' + jsonInput.toLowerCase())).trim();
+		if (!Assets.exists(Paths.json(folderLowercase + '/' + jsonInput.toLowerCase())))
+			rawJson = Assets.getText(Paths.json('epic/epic')).trim();
 
 		while (!rawJson.endsWith("}")) {
 			rawJson = rawJson.substr(0, rawJson.length - 1);

@@ -432,6 +432,9 @@ class ChartingState extends MusicBeatState {
 
 	var tab_group_note:FlxUI;
 
+	var hilar:FlxInputText;
+	var check_specialNote:FlxUICheckBox;
+
 	function addNoteUI():Void {
 		tab_group_note = new FlxUI(null, UI_box);
 		tab_group_note.name = 'Note';
@@ -445,11 +448,14 @@ class ChartingState extends MusicBeatState {
 
 		var stepperSusLengthLabel = new FlxText(74, 10, 'Note Sustain Length');
 
-		var applyLength:FlxButton = new FlxButton(10, 100, 'Apply Data');
+		hilar = new FlxInputText(10, 135, 150, 'special text here');
+		check_specialNote = new FlxUICheckBox(10, 100, null, null, "Mark As Special (Manually Editing Json)", 100);
+		check_specialNote.name = 'check_specialNote';
 
 		tab_group_note.add(stepperSusLength);
 		tab_group_note.add(stepperSusLengthLabel);
-		tab_group_note.add(applyLength);
+		tab_group_note.add(check_specialNote);
+		tab_group_note.add(hilar);
 
 		UI_box.addGroup(tab_group_note);
 	}
@@ -513,6 +519,8 @@ class ChartingState extends MusicBeatState {
 					FlxG.log.add('changed bpm shit');
 				case "Alternate Animation":
 					_song.notes[curSection].altAnim = check.checked;
+				case "Mark As Special":
+
 			}
 		} else if (id == FlxUINumericStepper.CHANGE_EVENT && (sender is FlxUINumericStepper)) {
 			var nums:FlxUINumericStepper = cast sender;
@@ -721,7 +729,7 @@ class ChartingState extends MusicBeatState {
 			}
 		}
 
-		if (!typingShit.hasFocus) {
+		if (!typingShit.hasFocus && !hilar.hasFocus) {
 			if (FlxG.keys.pressed.CONTROL) {
 				if (FlxG.keys.justPressed.Z && lastNote != null) {
 					trace(curRenderedNotes.members.contains(lastNote) ? "delete note" : "add note");
@@ -1015,6 +1023,11 @@ class ChartingState extends MusicBeatState {
 	function updateNoteUI():Void {
 		if (curSelectedNote != null)
 			stepperSusLength.value = curSelectedNote[2];
+
+		if (check_specialNote.checked)
+			curSelectedNote[3] = hilar.text;
+		else
+			curSelectedNote[3] = null;
 	}
 
 	function updateGrid():Void {
@@ -1183,6 +1196,7 @@ class ChartingState extends MusicBeatState {
 		var noteStrum = getStrumTime(dummyArrow.y) + sectionStartTime();
 		var noteData = Math.floor(FlxG.mouse.x / GRID_SIZE);
 		var noteSus = 0;
+		var lastSavedNote:Array<Dynamic> = curSelectedNote;
 
 		if (n != null)
 			_song.notes[curSection].sectionNotes.push([n.strumTime, n.noteData, n.sustainLength]);
@@ -1192,6 +1206,11 @@ class ChartingState extends MusicBeatState {
 		var thingy = _song.notes[curSection].sectionNotes[_song.notes[curSection].sectionNotes.length - 1];
 
 		curSelectedNote = thingy;
+		if (check_specialNote.checked)
+			lastSavedNote[3] = hilar.text;
+
+		hilar.text = '';
+		check_specialNote.checked = false;
 
 		updateGrid();
 		updateNoteUI();

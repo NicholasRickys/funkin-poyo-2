@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="nafri.png">
+<SubTexture name="nafri Idle Dance0000" x="0" y="1949" width="499" height="884" frameX="-252" frameY="-142" frameWidth="943" frameHeight="1103" />
+<SubTexture name="nafri Idle Dance0001" x="499" y="1949" width="496" height="884" frameX="-253" frameY="-142" frameWidth="943" frameHeight="1103" />
+<SubTexture name="nafri Idle Dance0002" x="2700" y="0" width="495" height="889" frameX="-255" frameY="-138" frameWidth="943" frameHeight="1103" />
+<SubTexture name="nafri Idle Dance0003" x="2242" y="0" width="458" height="899" frameX="-259" frameY="-128" frameWidth="943" frameHeight="1103" />
+<SubTexture name="nafri Idle Dance0004" x="1570" y="1021" width="429" height="906" frameX="-261" frameY="-121" frameWidth="943" frameHeight="1103" />
+<SubTexture name="nafri Idle Dance0005" x="1146" y="1021" width="424" height="907" frameX="-261" frameY="-120" frameWidth="943" frameHeight="1103" />
+<SubTexture name="nafri Sing Note LEFT0000" x="0" y="1021" width="578" height="928" frameX="-190" frameY="-108" frameWidth="943" frameHeight="1103" />
+<SubTexture name="nafri Sing Note LEFT0001" x="578" y="1021" width="568" height="923" frameX="-202" frameY="-114" frameWidth="943" frameHeight="1103" />
+<SubTexture name="nafri Sing Note DOWN0000" x="1632" y="1949" width="659" height="748" frameX="-60" frameY="-280" frameWidth="943" frameHeight="1103" />
+<SubTexture name="nafri Sing Note DOWN0001" x="995" y="1949" width="637" height="754" frameX="-72" frameY="-276" frameWidth="943" frameHeight="1103" />
+<SubTexture name="nafri Sing Note UP0000" x="0" y="0" width="514" height="1021" frameX="-254" frameY="-27" frameWidth="943" frameHeight="1103" />
+<SubTexture name="nafri Sing Note UP0001" x="514" y="0" width="535" height="998" frameX="-230" frameY="-48" frameWidth="943" frameHeight="1103" />
+<SubTexture name="nafri Sing Note RIGHT0000" x="1049" y="0" width="609" height="940" frameX="-203" frameY="-106" frameWidth="943" frameHeight="1103" />
+<SubTexture name="nafri Sing Note RIGHT0001" x="1658" y="0" width="584" height="937" frameX="-205" frameY="-109" frameWidth="943" frameHeight="1103" />
+</TextureAtlas>

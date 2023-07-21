@@ -23,6 +23,8 @@ class Note extends FlxSprite {
 	public var sustainLength:Float = 0;
 	public var isSustainNote:Bool = false;
 	public var randomHit:Float = 0;
+	public var characterSwitchy:Array<Character> = null;
+	public var defined:Bool = false;
 
 	public static var swagWidth:Float = 160 * 0.7;
 
@@ -132,7 +134,9 @@ class Note extends FlxSprite {
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 
-		if (FlxG.save.data.poyoMode ? !mustPress : mustPress) {
+		if (!defined) return;
+
+		if (mustPress != FlxG.save.data.poyoMode) {
 			if (isSustainNote) {
 				if (strumTime > Conductor.songPosition - (Conductor.safeZoneOffset * 1.5)
 					&& strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * 0.5))
@@ -146,9 +150,6 @@ class Note extends FlxSprite {
 				else
 					canBeHit = false;
 			}
-
-			if (strumTime < Conductor.safeZoneOffset * Conductor.timeScale && !wasGoodHit)
-				tooLate = true;
 		} else {
 			canBeHit = false;
 

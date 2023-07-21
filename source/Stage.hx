@@ -31,14 +31,23 @@ class Stage extends FlxTypedGroup<FlxSprite> {
 				BF_COORDS[1] = 100;
 				VISIBLE_GF = false;
 			case 'moneyscircle':
-				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('week2bg', 'poyo'));
+				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('week2bg', 'nafri'));
+				PlayState.instance.cameraZoom = 0.5;
 				bg.antialiasing = true;
 				add(bg);
-				PlayState.instance.cameraZoom = 0.8;
 				BF_COORDS[0] = 1631;
 				BF_COORDS[1] = 1031;
-				DAD_COORDS[0] = 690;
-				DAD_COORDS[1] = 1031;
+				DAD_COORDS[0] = 490;
+				DAD_COORDS[1] = 791;
+				VISIBLE_GF = false;
+			case 'backyard':
+				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('bg', 'rae'));
+				bg.antialiasing = true;
+				add(bg);
+				BF_COORDS[0] = 1600;
+				BF_COORDS[1] = 400;
+				DAD_COORDS[0] = 400;
+				DAD_COORDS[1] = 400;
 				VISIBLE_GF = false;
 			default:
 				var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('bg', 'poyo'));
@@ -57,7 +66,7 @@ class Stage extends FlxTypedGroup<FlxSprite> {
 		height = xywh[3];
 	}
 
-	public function returnStageXYWH() {
+	public function returnStageXYWH():Array<Float> {
 		var width:Float = 0;
 		var height:Float = 0;
 		var x:Float = 0;

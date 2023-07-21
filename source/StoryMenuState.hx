@@ -16,6 +16,7 @@ import lime.net.curl.CURLCode;
 import Discord.DiscordClient;
 #end
 import flixel.graphics.FlxGraphic;
+import DialogueState;
 
 using StringTools;
 
@@ -260,7 +261,14 @@ class StoryMenuState extends MusicBeatState {
 			PlayState.storyWeek = curWeek;
 			PlayState.campaignScore = 0;
 			new FlxTimer().start(1, function(tmr:FlxTimer) {
-				FlxG.switchState(new PlayState());
+				//FlxG.switchState(new PlayState());
+				if (GlobalVariables.songsWithDialogue[weekData[curWeek][0].toLowerCase()] != null)
+				{
+					DialogueState.song = weekData[curWeek][0].toLowerCase();
+					FlxG.switchState(new DialogueState());
+				}
+				else
+					FlxG.switchState(new PlayState());
 			});
 		}
 	}
