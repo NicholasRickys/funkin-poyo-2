@@ -101,12 +101,14 @@ class Main extends Sprite {
 					case FilePos(s, file, line, column):
 						errMsg += file + " (line " + line + ")\n";
 					default:
+						#if cpp
 						Sys.println(stackItem);
+						#end
 				}
 			}
 	
 			errMsg += "\nUncaught Error: " + e.error + "\nPlease report this error to the GitHub page: https://github.com/ShadowMario/FNF-PsychEngine\n\n> Crash Handler written by: sqirra-rng";
-	
+			#if sys
 			if (!FileSystem.exists("./crash/"))
 				FileSystem.createDirectory("./crash/");
 	
@@ -114,9 +116,12 @@ class Main extends Sprite {
 	
 			Sys.println(errMsg);
 			Sys.println("Crash dump saved in " + Path.normalize(path));
+			#end
 	
 			trace('error ' + errMsg);
+			#if sys
 			Sys.exit(1);
+			#end
 		}
 
 	public function toggleFPS(fpsEnabled:Bool):Void {

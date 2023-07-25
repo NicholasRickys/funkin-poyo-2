@@ -1,5 +1,6 @@
 package;
 
+import lime.graphics.FlashRenderContext;
 import openfl.Lib;
 import Song.SwagSection;
 import Song.SwagSong;
@@ -15,6 +16,7 @@ import flixel.math.FlxMath;
 import flixel.system.FlxSound;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
+import flixel.tweens.misc.ColorTween;
 import flixel.FlxBasic;
 import flixel.ui.FlxBar;
 import flixel.tweens.FlxTween;
@@ -132,7 +134,6 @@ class PlayState extends MusicBeatState {
 	public var iconP1:HealthIcon;
 	public var iconP2:HealthIcon;
 	public var camHUD:FlxCamera;
-	public var camDialogue:FlxCamera;
 	public var camGame:FlxCamera;
 
 	var notesHitArray:Array<Date> = [];
@@ -228,15 +229,10 @@ class PlayState extends MusicBeatState {
 		camHUD.alpha = 0.0001;
 		camHUD.bgColor.alpha = 0;
 
-		camDialogue = new FlxCamera();
-		camDialogue.bgColor.alpha = 0;
-
 		FlxG.cameras.reset(camGame);
 		FlxG.cameras.add(camHUD);
-		FlxG.cameras.add(camDialogue);
 
 		FlxG.cameras.setDefaultDrawTarget(camHUD, false);
-		FlxG.cameras.setDefaultDrawTarget(camDialogue, false);
 
 		persistentUpdate = persistentDraw = true;
 
@@ -427,7 +423,7 @@ class PlayState extends MusicBeatState {
 		#end
 
 		startingSong = true;
-	
+
 		switch (curSong.toLowerCase())
 		{
 			default:
@@ -455,9 +451,16 @@ class PlayState extends MusicBeatState {
 
 		if (curSong.toLowerCase() != 'summer-sunset') {
 			startTimer = new FlxTimer().start(Conductor.crochet / 1000, function(tmr:FlxTimer) {
-				dad.dance();
+				for (char in [dad, dad_2, dad_3])
+				{
+					if (char == null) continue;
+					char.dance();
+				}
+
 				gf.dance();
-				boyfriend.dance();
+
+				for (char in playerSing)
+					char.dance();
 	
 				var introAssets:Map<String, Array<String>> = new Map<String, Array<String>>();
 				introAssets.set('default', ['ready', "set", "go"]);
@@ -1804,7 +1807,7 @@ class PlayState extends MusicBeatState {
 				manualCam = false;
 				cameraCanBop = false;
 				camGame.flash(FlxColor.WHITE, 1);
-				stage.setAlpha(0.62);
+				stage.alpha = 0.62;
 			}
 
 			if (curBeat == 248) {
@@ -1820,7 +1823,7 @@ class PlayState extends MusicBeatState {
 			}
 
 			if (curBeat == 320) {
-				stage.setAlpha(1);
+				stage.alpha = 1;
 				cameraZoom = 1;
 				gfSpeed = 1;
 				cameraBop = 4;
@@ -1909,6 +1912,46 @@ class PlayState extends MusicBeatState {
 			return dad_3;
 
 		return dad;
+	}
+
+	var colorSet = false;
+
+	function fadeChars(firstColor:FlxColor, secondColor:FlxColor, ?thirdColor:FlxColor = 0xFFFFFFFF)
+	{
+		var duration = Conductor.crochet / 1000;
+		if (!colorSet)
+		{
+			for (char in [dad_2, dad_3, dad, boyfriend, gf])
+				if (char != null)
+					FlxTween.color(char, duration, char.color, firstColor);
+
+			stage.forEachAlive(function(spr:FlxSprite) {
+				FlxTween.color(spr, duration, spr.color, secondColor);
+			});
+			colorSet = true;
+		}
+		else
+		{
+			stage.forEachAlive(function(spr:FlxSprite) {
+				spr.color = thirdColor;
+				FlxTween.color(spr, duration, spr.color, secondColor);
+			});
+		}
+
+	}
+
+	function unfadeChars()
+	{
+		FlxTween.tween(dad, {color: 0xFFFFFFFF}, Conductor.crochet / 1000);
+		FlxTween.tween(gf, {color: 0xFFFFFFFF}, Conductor.crochet / 1000);
+		FlxTween.tween(boyfriend, {color: 0xFFFFFFFF}, Conductor.crochet / 1000);
+
+		for (char in [dad_2, dad_3])
+			if (char != null)
+				char.color = 0xFFFFFFFF;
+
+		FlxTween.tween(stage, {color: 0xFFFFFFFF});
+		colorSet = false;
 	}
 
 	override function destroy(){

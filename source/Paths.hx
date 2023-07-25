@@ -1,14 +1,56 @@
 package;
 
 import flixel.FlxG;
-import flixel.graphics.FlxGraphic;
-import flixel.graphics.frames.FlxAtlasFrames;
 import openfl.utils.AssetType;
-import openfl.media.Sound;
 import openfl.utils.Assets as OpenFlAssets;
 import openfl.display3D.textures.Texture;
 import openfl.display.BitmapData;
 import openfl.system.System;
+import flash.geom.Rectangle;
+import flixel.graphics.FlxGraphic;
+import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.graphics.frames.FlxFrame;
+import flixel.graphics.frames.FlxFramesCollection;
+import flixel.math.FlxPoint;
+import flixel.math.FlxRect;
+import flixel.system.FlxAssets;
+
+using StringTools;
+
+typedef JSONCharacter = {
+	frames:Array<{
+		filename:String,
+		frame:{
+			x:Int,
+			y:Int,
+			w:Int,
+			h:Int
+		},
+		rotated:Bool,
+		trimmed:Bool,
+		spriteSourceSize:{
+			x:Int,
+			y:Int,
+			w:Int,
+			h:Int
+		},
+		sourceSize:{
+			w:Int,
+			h:Int
+		}
+	}>,
+	meta:{
+		app:String,
+		version:String,
+		image:String,
+		format:String,
+		size:{
+			w:Int,
+			h:Int
+		},
+		scale:String
+	}
+}
 
 class Paths {
 	inline public static var SOUND_EXT = #if web "mp3" #else "ogg" #end;
@@ -130,6 +172,14 @@ class Paths {
 		return getPath('data/$key.json', TEXT, library);
 	}
 
+	inline static public function charJson(key:String, ?library:String) {
+		return getPath('images/$key.json', TEXT, library);
+	}
+
+	inline static public function modchart(song:String, key:String, ?library:String) {
+		return getPath('data/$song/$key.lua', TEXT, library);
+	}
+
 	static public function sound(key:String, ?library:String) {
 		return returnSound('sounds', key, library);
 	}
@@ -246,5 +296,60 @@ class Paths {
 
 		FlxG.log.error('oh no $file is returning null NOOOO');
 		return null;
+	}
+
+	// custom shit lol
+	inline static public function getJSONChar(key:String, ?library:String) {
+		var rawJson = OpenFlAssets.getText(charJson(key, library)).trim();
+		while (!rawJson.endsWith("}")) {
+			rawJson = rawJson.substr(0, rawJson.length - 1);
+		}
+		trace(rawJson);
+		return fromJSON(image(key, library), rawJson);
+	}
+
+	static function fromJSON(source:FlxGraphicAsset, json:String):FlxAtlasFrames
+	{
+		var parsedJson:JSONCharacter = haxe.Json.parse(json);
+		var graphic:FlxGraphic = FlxG.bitmap.add(source);
+		if (graphic == null)
+			return null;
+		// No need to parse data again
+		var frames:FlxAtlasFrames = FlxAtlasFrames.findFrame(graphic);
+		if (frames != null)
+			return frames;
+
+		if (graphic == null || xml == null)
+			return null;
+
+		frames = new FlxAtlasFrames(graphic);
+
+		for (frame in parsedJson.frames)
+		{
+			var rect = FlxRect.get(frame.frame.x, frame.frame.y, frame.frame.w,
+				frame.frame.h);
+
+			var size = if (frame.trimmed)
+			{
+				new Rectangle(frame.spriteSourceSize.x, frame.spriteSourceSize.y, frame.spriteSourceSize.w,
+					frame.spriteSourceSize.h);
+			}
+			else
+			{
+				new Rectangle(0, 0, rect.width, rect.height);
+			}
+
+			var angle = frame.rotated ? FlxFrameAngle.ANGLE_NEG_90 : FlxFrameAngle.ANGLE_0;
+
+			var offset = FlxPoint.get(size.left, size.top);
+			var sourceSize = FlxPoint.get(size.width, size.height);
+
+			if (frame.rotated && !frame.trimmed)
+				sourceSize.set(size.height, size.width);
+
+			frames.addAtlasFrame(rect, sourceSize, offset, frame.filename, angle, false, false);
+		}
+
+		return frames;
 	}
 }

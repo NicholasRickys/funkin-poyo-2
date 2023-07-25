@@ -5,10 +5,6 @@ import lime.utils.Assets;
 
 using StringTools;
 
-typedef SwagNote = {
-	var charactersSing:Array<Int>;
-}
-
 typedef SwagSection = {
 	var sectionNotes:Array<Dynamic>;
 	var lengthInSteps:Int;

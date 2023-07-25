@@ -15,7 +15,7 @@ class PoyoLua
 
     public static function startUp(filename:String)
     {
-       LuaHandler.new(Paths.modchart(filename))
+       LuaHandler.new(Paths.modchart(filename));
        LuaHandler.setCallback('addHook', registerHook);
     }
 

@@ -1,8 +1,10 @@
 package;
 
+import flixel.util.FlxColor;
 import flixel.group.FlxGroup;
 import flixel.FlxSprite;
 import flixel.math.FlxMath;
+import flixel.util.FlxColor;
 import PlayState;
 
 class Stage extends FlxTypedGroup<FlxSprite> {
@@ -15,6 +17,9 @@ class Stage extends FlxTypedGroup<FlxSprite> {
 	// since we arent using sprite group anymore we had to compensate in a way
 	public var width:Float = 0;
 	public var height:Float = 0;
+
+	public var alpha:Float = 1;
+
 	public function new(stageName:String) {
 		super();
 		switch (stageName) {
@@ -66,6 +71,14 @@ class Stage extends FlxTypedGroup<FlxSprite> {
 		height = xywh[3];
 	}
 
+	override function update(elapsed:Float)
+	{
+		forEachAlive(function(spr:FlxSprite) {
+			spr.alpha = alpha;
+		});
+		super.update(elapsed);
+	}
+
 	public function returnStageXYWH():Array<Float> {
 		var width:Float = 0;
 		var height:Float = 0;
@@ -78,11 +91,5 @@ class Stage extends FlxTypedGroup<FlxSprite> {
 			if (spr.height > height) height = spr.height;
 		});
 		return [x, y, width, height];
-	}
-
-	public function setAlpha(newAlp:Float) {
-		forEachAlive(function(spr:FlxSprite) {
-			spr.alpha = newAlp;
-		});
 	}
 }

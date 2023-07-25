@@ -83,7 +83,7 @@ class Character extends FlxSprite {
 				addOffset("singDOWN", 0, -30);
 			case 'poyo':
 				camZoom = 0.8;
-				frames = Paths.getSparrowAtlas('characters/PoyoSprites', 'poyo');
+				frames = Paths.getJSONChar('characters/PoyoSprites', 'poyo');
 
 				animation.addByPrefix('idle', 'poyo_boppin', 24, false);
 				if (!isPlayer) {
